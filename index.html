@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 - MeiYang</title>
+    
+    <link rel="stylesheet" type="text/css" href="static/app/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/app/content/site.css" />
+    <script src="static/app/scripts/modernizr-2.6.2.js"></script>
+    
+
+<style>
+    /* ====================== 配色/字級/元件設定區（可自行調整）====================== */
+    :root {
+        /* -------- 1. 背景與文字顏色 -------- */
+        --main-bg-color: #262626;       /* 整個網頁的深灰背景 */
+        --card-bg-color: #262626;       /* 個人介紹卡片的背景 */
+        --main-text-color: #FFFFFF;     /* 主要文字顏色 (白) */
+        --sub-text-color: #f3f3f3;      /* 次要文字顏色 (如頁尾 Email) */
+
+        /* -------- 2. 導航列 (最上方選單) -------- */
+        --nav-brand-size: 25px;         /* 左上角 MeiYang LOGO 的字體大小 */
+        --nav-item-size: 15px;          /* 選單選項 (各大系統、資訊補給) 的字體大小 */
+
+        /* -------- 3. 標題字體大小 -------- */
+        --card-title-size: 36px;        /* 個人介紹標題 (MeiYang) 大小 */
+        --section-title-size: 25px;     /* 各區塊標題 (音樂作品、業務事項) 大小 */
+
+        /* -------- 4. 按鈕設定 (Buttons) -------- */
+        /* [共用設定] */
+        --btn-radius: 5px;              /* 按鈕圓角 (0px=直角, 10px=圓角, 50px=膠囊狀) */
+        --btn-font-size: 14px;          /* 按鈕文字大小 */
+        --btn-padding: 6px 12px;        /* 按鈕內距 (上下 左右) - 決定按鈕胖瘦 */
+
+        /* [主要按鈕] (例如：點擊察看、打開詳細) - 對應 class="btn-primary" */
+        --btn-p-bg: #337ab7;            /* 背景顏色 (原本是藍色) */
+        --btn-p-text: #ffffff;          /* 文字顏色 */
+        --btn-p-border: #2e6da4;        /* 邊框顏色 */
+
+        /* [次要按鈕] (例如：彈跳視窗的關閉) - 對應 class="btn-secondary" */
+        --btn-s-bg: #ffffff;            /* 背景顏色 (原本是白色) */
+        --btn-s-text: #333333;          /* 文字顏色 */
+        --btn-s-border: #cccccc;        /* 邊框顏色 */
+
+        /* -------- 5. 輸入框與下拉選單 (Input / Select) - 預留擴充用 -------- */
+        /* 雖然目前網頁沒用到，但設定好後，未來新增 <input> 就會自動套用 */
+        --input-bg: #ffffff;            /* 輸入框背景色 */
+        --input-text: #000000;          /* 輸入內容文字顏色 */
+        --input-border: #cccccc;        /* 輸入框邊框顏色 */
+        --input-radius: 4px;            /* 輸入框圓角 */
+        --input-height: 34px;           /* 輸入框高度 */
+    }
+
+    /* ====================== 設定區結束，下方為樣式邏輯 (建議勿動）====================== */
+    body {
+        background-color: var(--main-bg-color);
+        color: var(--main-text-color);
+    }
+
+    .container.body-content {
+        background-color: var(--main-bg-color);
+        max-width: 2000px !important;
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+
+    /* 導航列 */
+    .navbar-brand { font-size: var(--nav-brand-size) !important; }
+    .navbar-nav li a { font-size: var(--nav-item-size) !important; }
+
+    /* 個人介紹卡片 */
+    .happy {
+        width: 800px;
+        margin: 20px auto;
+        border: solid 1px gray;
+        background-color: var(--card-bg-color);
+        overflow: hidden; 
+    }
+    .bdcard { width: 300px; float: left; padding: 20px; }
+    .bdcard img { display: block; width: 100%; }
+    .bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--main-text-color); }
+    .bdtext h1 { font-size: var(--card-title-size); margin-top: 20px; margin-bottom: 10px; }
+
+    /* 區塊標題 */
+    .section-title {
+        font-size: var(--section-title-size) !important;
+        color: var(--main-text-color) !important;
+        font-weight: bold;
+    }
+
+    /* ====================== 元件樣式覆蓋 (將變數套用到 Bootstrap 元件)====================== */   
+    /* 1. 主要按鈕 (btn-primary) */
+    .btn-primary {
+        background-color: var(--btn-p-bg) !important;
+        color: var(--btn-p-text) !important;
+        border-color: var(--btn-p-border) !important;
+        border-radius: var(--btn-radius) !important;
+        font-size: var(--btn-font-size) !important;
+        padding: var(--btn-padding) !important;
+    }
+
+    /* 2. 次要按鈕 (btn-secondary 或 btn-default) */
+    .btn-secondary, .btn-default {
+        background-color: var(--btn-s-bg) !important;
+        color: var(--btn-s-text) !important;
+        border-color: var(--btn-s-border) !important;
+        border-radius: var(--btn-radius) !important;
+        font-size: var(--btn-font-size) !important;
+        padding: var(--btn-padding) !important;
+    }
+
+    /* 3. 輸入框與選單 (input, select, textarea) */
+    input, select, textarea, .form-control {
+        background-color: var(--input-bg) !important;
+        color: var(--input-text) !important;
+        border: 1px solid var(--input-border) !important;
+        border-radius: var(--input-radius) !important;
+        height: var(--input-height) !important; /* 注意：textarea 可能需要另外設高度 */
+    }
+
+</style>
+
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">MeiYang</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">各大系統</a></li>
+                    <li><a href="about.html">資訊補給</a></li>
+                    <li><a href="#">阿幹還想不到標題</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+    <div class="happy">
+        <div class="bdcard">
+            <img src="static/img1/00.jpg" />
+        </div>
+        <div class="bdtext">
+            <h1>MeiYang</h1>
+            <p>⦿詞曲創作者 ⦿不專業錄音師 ⦿菜逼八吉他手</p>
+            <p>⦿餐飲業打滾 ⦿外場管事主管 ⦿人資承辦負責</p>
+            <p>經歷﹕詞曲創作 - 2005 ~ 至今</p>
+            <p>　　　餐飲人生 - 2005 ~ 至今</p>
+            <p>　　　非專錄音 - 2018 ~ 至今</p>
+            <p>　　　人資承辦 - 2024 ~ 至今 (四品牌業務)</p>
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div style="text-align:center">
+            <h2 class="section-title">音樂作品</h2>
+        </div>
+        <img src="static/img1/01.jpg" style="max-height: 100%; max-width: 100%;" alt="Alternate Text" />
+        <br>
+        <div class="links">
+            <br>
+            <a href="https://reurl.cc/knzAMd">KKBOX &raquo;</a>
+            <a href="https://reurl.cc/NY7ele">　Spotify &raquo;</a>
+            <a href="https://reurl.cc/RYZMeZ">　LINE MUSIC &raquo;</a>
+            <a href="https://reurl.cc/qGlevE">　Apple Music &raquo;</a>
+            <a href="https://reurl.cc/VYdVMA">　My Music &raquo;</a>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#01">
+            點擊察看
+        </button>
+        <br>
+        <br>
+        <a href="https://reurl.cc/7K1x4y"><img src="static/img1/FB.png" height="55" width="55"></a>
+        <a href="https://reurl.cc/pakE9x"><img src="static/img1/IG.png" height="55" width="55"></a>
+        <a href="https://reurl.cc/vQZNpe"><img src="static/img1/YT.png" height="55" width="55"></a>
+        <a href="https://line.me/ti/p/kpJ29xANim"><img src="static/img1/Line.png" height="55" width="55"></a>
+        <br>
+    </div>
+
+    <div class="col-md-8">
+        <div style="text-align:center">
+            <h2 class="section-title">業務承接事項</h2>
+        </div>
+        <img src="static/img1/業務事項.png" style="max-height: 100%; max-width: 105%;" alt="Alternate Text" />
+    </div>
+</div>
+
+<div class="modal fade" id="01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="color: #333;">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel" style="text-align:center">上架作品</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <br>
+            <ol>
+                <li>
+                    『 你我一起 』
+                    <ul>
+                        <li>參與歌詞</li>
+                        <li>2020-02-10-上架</li>
+                    </ul>
+                    <img src="static/img1/04.jpg" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <br>
+                </li>
+                <li>
+                    『 面具 』
+                    <ul>
+                        <li>參與歌詞</li>
+                        <li>2020-02-10-上架</li>
+                    </ul>
+                    <img src="static/img1/05.png" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <br>
+                </li>
+                <li>
+                    『 妳還記得嗎？ 』
+                    <ul>
+                        <li>復刻愛情首部曲</li>
+                        <li>2021-08-30-上架</li>
+                    </ul>
+                    <img src="static/img1/02.jpg" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <br>
+                </li>
+                <li>
+                    『 再見了 親愛的 』
+                    <ul>
+                        <li>紀念愛情上部曲</li>
+                        <li>2025-05-20-上架</li>
+                    </ul>
+                    <img src="static/img1/03.jpg" style="max-height: 40%; max-width: 40
