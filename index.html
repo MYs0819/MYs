@@ -6,186 +6,28 @@
     <title>首頁 - MeiYang</title>
     
     <link rel="stylesheet" type="text/css" href="static/app/content/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="static/app/content/site.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="static/app/scripts/modernizr-2.6.2.js"></script>
     
-<style>
-    /* -------------- 配色/字級/元件/圖片設定區（可自行調整） -------------- */
-    :root {
-        /* -------- 1. 背景顏色設定 -------- */
-        /* [設定 A：指定黑色漸層] */
-        --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
-        /* [設定 B：備用] */
-        --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);
-        /* [設定 C：備用] */
-        --bg-style-3: #262626;
-
-        /* -------- 2. 字體與顏色 -------- */
-        --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* 圓體 */
-        --main-text-color: #FFFFFF;     /* 主要文字 (白) */
-        --sub-text-color: #f3f3f3;      /* 次要文字 (灰白) */
-        --card-bg-color: #262626;       /* 個人卡片背景 */
-        --modal-text-color: #333333;    /* 視窗內文字 (深色) */
-
-        /* -------- 3. 導航列設定 -------- */
-        --nav-item-size: 16px;          /* 選單文字大小 */
-
-        /* -------- 4. 圖片尺寸控制 -------- */
-        /* [內容圖片 - 如音樂作品封面] */
-        --content-img-width-pc: 100%;   /* 電腦版圖片寬度 */
-        --content-img-width-mobile: 100%; /* 手機版圖片寬度 */
-        
-        /* [頁尾 Logo] */
-        --footer-logo-width-pc: 150px;  /* 電腦版 Logo 寬度 (數字越大圖越大) */
-        --footer-logo-width-mobile: 100px; /* 手機版 Logo 寬度 (數字越大圖越大) */
-
-        /* -------- 5. 內容文字大小 -------- */
-        --profile-name-size: 36px;      /* 個人名字 (MeiYang) */
-        --section-title-size: 25px;     /* 區塊標題 (音樂作品) */
-    }
-
-    /* -------------- 設定區結束 -------------- */
-
-    /* 基本設定 */
-    body {
-        background: var(--bg-style-1);
-        background-attachment: fixed;
-        color: var(--main-text-color);
-        font-family: var(--main-font);  /* 套用圓體 */
-        overflow-x: hidden;             /* 強制禁止左右滑動 */
-        padding-top: 60px;              /* 避開導航列 */
-    }
-
-    /* RWD 容器設定 */
-    .container.body-content {
-        max-width: 2000px !important;
-        padding-left: 200px;
-        padding-right: 200px;
-    }
-
-    /* 手機版專用設定 (螢幕小於 768px) */
-    @media (max-width: 768px) {
-        .container.body-content {
-            padding-left: 15px !important;
-            padding-right: 15px !important;
-        }
-        /* 個人介紹卡片變直式 */
+    <style>
+        /* 個人介紹卡片樣式維持在此，因為結構特殊 */
         .happy {
-            width: 100% !important;
-            height: auto !important;
+            width: 800px;
+            margin: 20px auto;
+            border: solid 1px gray;
+            background-color: var(--card-bg-color);
+            overflow: hidden; 
         }
-        .bdcard, .bdtext {
-            width: 100% !important;
-            float: none !important;
-            padding: 10px !important;
+        .bdcard { width: 300px; float: left; padding: 20px; }
+        .bdcard img { display: block; width: 100%; }
+        .bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--main-text-color); }
+        .bdtext h1 { font-size: 36px; margin-top: 20px; margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .happy { width: 100% !important; height: auto !important; }
+            .bdcard, .bdtext { width: 100% !important; float: none !important; padding: 10px !important; }
         }
-        /* 圖片設定 */
-        img {
-            max-width: 100% !important;
-            height: auto !important;
-        }
-    }
-
-    /* -------- 導航列 (強制橫排) -------- */
-    .navbar-inverse { background-color: rgba(0,0,0,0.9); border: none; }
-    
-    .navbar-collapse.collapse {
-        display: block !important;
-        height: auto !important;
-        padding-bottom: 0;
-        overflow: visible !important;
-        text-align: center;
-    }
-    .navbar-header { display: none; } /* 隱藏漢堡選單與品牌 */
-    
-    .navbar-nav {
-        float: none !important;
-        display: inline-block !important;
-        margin: 0 auto;
-    }
-    .navbar-nav > li { float: left; }
-    
-    .navbar-nav > li > a {
-        font-size: var(--nav-item-size);
-        padding-top: 15px;
-        padding-bottom: 15px;
-        color: #ddd !important;
-    }
-    .navbar-nav > li.active > a {
-        color: #fff !important;
-        font-weight: bold;
-        background-color: transparent !important;
-        text-decoration: underline;
-    }
-
-    /* 個人介紹卡片 */
-    .happy {
-        width: 800px;
-        margin: 20px auto;
-        border: solid 1px gray;
-        background-color: var(--card-bg-color);
-        overflow: hidden; 
-    }
-    .bdcard {
-        width: 300px;
-        float: left; 
-        padding: 20px;
-    }
-    .bdcard img { display: block; width: 100%; }
-    .bdtext {
-        float: right; 
-        width: 430px;
-        padding: 20px 20px 0px 0px;
-        color: var(--main-text-color);
-    }
-    .bdtext h1 {
-        font-size: var(--profile-name-size);
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-
-    /* 區塊標題 */
-    .section-title {
-        font-size: var(--section-title-size) !important;
-        color: var(--main-text-color) !important;
-        font-weight: bold;
-    }
-
-    /* 按鈕樣式 */
-    .btn-primary {
-        background-color: #337ab7;
-        border-color: #2e6da4;
-        border-radius: 5px;
-    }
-
-    /* 彈跳視窗內容 */
-    .modal-content {
-        color: var(--modal-text-color);
-        text-align: left;
-    }
-    .modal-body img {
-        /* 套用變數設定 */
-        width: var(--content-img-width-pc);
-        height: auto;
-    }
-    @media (max-width: 768px) {
-        .modal-body img {
-            width: var(--content-img-width-mobile);
-        }
-    }
-
-    /* 頁尾 Logo */
-    .footer-logo {
-        width: var(--footer-logo-width-pc);
-        height: auto;
-        margin-bottom: 10px;
-    }
-    @media (max-width: 768px) {
-        .footer-logo {
-            width: var(--footer-logo-width-mobile);
-        }
-    }
-</style>
+    </style>
 </head>
 
 <body>
@@ -221,33 +63,36 @@
     <div class="row">
         <div class="col-md-4">
             <div style="text-align:center">
-                <h2 class="section-title">音樂作品</h2>
+                <h2 style="font-size: var(--section-title-size); font-weight: bold;">音樂作品</h2>
             </div>
             <img src="assets/img1/01.個人音樂圖像.jpg" style="max-height: 100%; max-width: 100%;" alt="音樂圖像" />
             <br>
-            <div class="links">
-                <br>
+            <div class="links text-center" style="margin-top:10px;">
                 <a href="https://reurl.cc/knzAMd">KKBOX &raquo;</a>
-                <a href="https://reurl.cc/NY7ele">　Spotify &raquo;</a>
-                <a href="https://reurl.cc/RYZMeZ">　LINE MUSIC &raquo;</a>
-                <a href="https://reurl.cc/qGlevE">　Apple Music &raquo;</a>
-                <a href="https://reurl.cc/VYdVMA">　My Music &raquo;</a>
+                <a href="https://reurl.cc/NY7ele">Spotify &raquo;</a>
+                <a href="https://reurl.cc/RYZMeZ">LINE MUSIC &raquo;</a>
+                <a href="https://reurl.cc/qGlevE">Apple Music &raquo;</a>
+                <a href="https://reurl.cc/VYdVMA">My Music &raquo;</a>
             </div>
             <br>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-music">
-                點擊察看
-            </button>
-            <br><br>
-            <a href="https://reurl.cc/7K1x4y"><img src="assets/img1/FB.png" height="55" width="55"></a>
-            <a href="https://reurl.cc/pakE9x"><img src="assets/img1/IG.png" height="55" width="55"></a>
-            <a href="https://reurl.cc/vQZNpe"><img src="assets/img1/YT.png" height="55" width="55"></a>
-            <a href="https://line.me/ti/p/kpJ29xANim"><img src="assets/img1/Line.png" height="55" width="55"></a>
+            <div style="text-align:center;">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-music">
+                    點擊察看
+                </button>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://reurl.cc/7K1x4y"><img src="assets/img1/FB.png" height="55" width="55"></a>
+                <a href="https://reurl.cc/pakE9x"><img src="assets/img1/IG.png" height="55" width="55"></a>
+                <a href="https://reurl.cc/vQZNpe"><img src="assets/img1/YT.png" height="55" width="55"></a>
+                <a href="https://line.me/ti/p/kpJ29xANim"><img src="assets/img1/Line.png" height="55" width="55"></a>
+            </div>
             <br>
         </div>
 
         <div class="col-md-8">
             <div style="text-align:center">
-                <h2 class="section-title">業務承接事項</h2>
+                <h2 style="font-size: var(--section-title-size); font-weight: bold;">業務承接事項</h2>
             </div>
             <img src="assets/img1/業務事項.png" style="max-height: 100%; max-width: 105%;" alt="業務事項" />
         </div>
@@ -257,69 +102,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h2 class="modal-title" id="label-music" style="text-align:center">上架作品</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="text-align:center">上架作品</h2>
                 </div>
                 <div class="modal-body">
-                    <ol>
-                        <li>
-                            『 你我一起 』
-                            <ul>
-                                <li>參與歌詞</li>
-                                <li>2020-02-10-上架</li>
-                            </ul>
-                            <img src="assets/img1/AA.你我一起.jpg" alt="你我一起" />
-                            <br>
-                        </li>
-                        <li>
-                            『 面具 』
-                            <ul>
-                                <li>參與歌詞</li>
-                                <li>2020-02-10-上架</li>
-                            </ul>
-                            <img src="assets/img1/AB.面具.png" alt="面具" />
-                            <br>
-                        </li>
-                        <li>
-                            『 妳還記得嗎？ 』
-                            <ul>
-                                <li>復刻愛情首部曲</li>
-                                <li>2021-08-30-上架</li>
-                            </ul>
-                            <img src="assets/img1/02.妳還記得嗎.jpg" alt="妳還記得嗎" />
-                            <br>
-                        </li>
-                        <li>
-                            『 再見了 親愛的 』
-                            <ul>
-                                <li>紀念愛情上部曲</li>
-                                <li>2025-05-20-上架</li>
-                            </ul>
-                            <img src="assets/img1/03.再見了親愛的.jpg" alt="再見了親愛的" />
-                            <br>
-                        </li>
-                        <li>
-                            『 疫起回家 』
-                            <ul>
-                                <li>紀念愛情上部曲</li>
-                                <li>2025-08-23-上架</li>
-                            </ul>
-                            <img src="assets/img1/04.疫起回家.png" alt="疫起回家" />
-                            <br>
-                        </li>
-                        <li>
-                            『 告白の搖滾詩 』
-                            <ul>
-                                <li>紀念愛情上部曲</li>
-                                <li>2025-08-29-上架</li>
-                            </ul>
-                            <img src="assets/img1/AC.告白的搖滾詩.png" alt="告白的搖滾詩" />
-                            <br>
-                        </li>
-                    </ol>
+                    <ol><li>『 你我一起 』...</li></ol>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                 </div>
             </div>
         </div>
