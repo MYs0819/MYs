@@ -10,9 +10,9 @@
     <script src="static/app/scripts/modernizr-2.6.2.js"></script>
     
 <style>
-    /* -------------- 配色/字級/元件設定區（可自行調整） -------------- */
+    /* -------------- 配色/字級/元件/圖片設定區（可自行調整） -------------- */
     :root {
-        /* -------- 1. 背景顏色設定 (Backgrounds) -------- */
+        /* -------- 1. 背景顏色設定 -------- */
         /* [設定 A：指定黑色漸層] */
         --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
         /* [設定 B：備用] */
@@ -20,73 +20,102 @@
         /* [設定 C：備用] */
         --bg-style-3: #262626;
 
-        /* -------- 2. 文字顏色 -------- */
+        /* -------- 2. 字體與顏色 -------- */
+        --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* 圓體 */
         --main-text-color: #FFFFFF;     /* 主要文字 (白) */
         --sub-text-color: #f3f3f3;      /* 次要文字 (灰白) */
         --modal-text-color: #333333;    /* 視窗內文字 (深色) */
 
-        /* -------- 3. 導航列與選單 -------- */
-        --nav-brand-size: 25px;         /* LOGO 字體大小 */
-        --nav-item-size: 15px;          /* 選單連結字體大小 */
-        --nav-toggle-text-size: 14px;   /* 手機版「選單」文字大小 */
-        --nav-toggle-text-color: #fff;  /* 手機版「選單」文字顏色 */
+        /* -------- 3. 導航列設定 -------- */
+        --nav-item-size: 16px;          /* 選單文字大小 */
 
-        /* -------- 4. 頁面標題與內容 -------- */
-        --page-title-h1: 36px;          /* 頁面最大標題 (勞資知識補給站) */
-        --page-subtitle-h2: 30px;       /* 頁面副標題 (This is message) */
-        --card-header-size: 24px;       /* 卡片標題 (正兼職須知) */
+        /* -------- 4. 圖片尺寸控制 -------- */
+        /* [內容圖片 - 如加班費計算表] */
+        --content-img-width-pc: 95%;    /* 電腦版圖片寬度 */
+        --content-img-width-mobile: 100%; /* 手機版圖片寬度 */
         
-        /* -------- 5. 圖片設定 -------- */
-        --footer-logo-height: 40px;     /* 頁尾 Logo 高度 */
+        /* [頁尾 Logo] */
+        --footer-logo-width-pc: 150px;  /* 電腦版 Logo 寬度 */
+        --footer-logo-width-mobile: 100px; /* 手機版 Logo 寬度 */
+
+        /* -------- 5. 標題大小 -------- */
+        --page-title-h1: 36px;          /* 頁面大標題 */
+        --page-subtitle-h2: 30px;       /* 頁面副標題 */
+        --card-header-size: 24px;       /* 卡片標題 */
     }
 
-    /* -------------- 設定區結束，下方為樣式邏輯 (建議勿動) -------------- */
+    /* -------------- 設定區結束 -------------- */
 
     /* 基本設定 */
     body {
         background: var(--bg-style-1);
         background-attachment: fixed;
         color: var(--main-text-color);
-        overflow-x: hidden;             /* ★重要：強制禁止左右滑動 */
+        font-family: var(--main-font);  /* 套用圓體 */
+        overflow-x: hidden;             /* 強制禁止左右滑動 */
+        padding-top: 60px;
     }
 
-    /* 容器設定 (RWD) */
+    /* RWD 容器設定 */
     .container.body-content {
         max-width: 2000px !important;
         padding-left: 200px;
         padding-right: 200px;
     }
 
-    /* ★ 手機版專用設定 */
+    /* 手機版專用設定 */
     @media (max-width: 768px) {
         .container.body-content {
             padding-left: 15px !important;
             padding-right: 15px !important;
         }
-        /* 讓圖片適應手機 */
-        img {
-            max-width: 100% !important;
-            height: auto !important;
-        }
-        /* 表格欄位在手機上堆疊 */
+        /* 讓表格欄位在手機上堆疊 */
         .col-md-3 {
             margin-bottom: 30px;
         }
+        /* 手機版內容圖片 */
+        .modal-body img, .text-center img {
+            width: var(--content-img-width-mobile) !important;
+            height: auto !important;
+        }
     }
 
-    /* 導航列樣式 */
-    .navbar-inverse { background-color: rgba(0,0,0,0.8); border: none; }
-    .navbar-brand { font-size: var(--nav-brand-size) !important; }
-    .navbar-nav li a { font-size: var(--nav-item-size) !important; }
+    /* 電腦版內容圖片 */
+    .modal-body img, .text-center img {
+        width: var(--content-img-width-pc);
+        height: auto;
+    }
 
-    /* ★ 手機版選單按鈕 */
-    .navbar-toggle .menu-text {
-        color: var(--nav-toggle-text-color);
-        font-size: var(--nav-toggle-text-size);
-        float: left;
-        margin-right: 5px;
-        margin-top: 1px;
+    /* -------- 導航列 (強制橫排) -------- */
+    .navbar-inverse { background-color: rgba(0,0,0,0.9); border: none; }
+    
+    .navbar-collapse.collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+        text-align: center;
+    }
+    .navbar-header { display: none; } 
+    
+    .navbar-nav {
+        float: none !important;
+        display: inline-block !important;
+        margin: 0 auto;
+    }
+    .navbar-nav > li { float: left; }
+    
+    .navbar-nav > li > a {
+        font-size: var(--nav-item-size);
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: #ddd !important;
+    }
+    .navbar-nav > li.active > a {
+        color: #fff !important;
         font-weight: bold;
+        background-color: transparent !important;
+        text-decoration: underline;
     }
 
     /* 標題樣式 */
@@ -112,7 +141,7 @@
         border-radius: 5px;
     }
 
-    /* 彈跳視窗內容文字 */
+    /* 彈跳視窗內容 */
     .modal-content {
         color: var(--modal-text-color);
         text-align: left;
@@ -120,10 +149,14 @@
 
     /* 頁尾 Logo */
     .footer-logo {
-        height: var(--footer-logo-height);
-        width: auto;
+        width: var(--footer-logo-width-pc);
+        height: auto;
         margin-bottom: 10px;
-        display: inline-block;
+    }
+    @media (max-width: 768px) {
+        .footer-logo {
+            width: var(--footer-logo-width-mobile);
+        }
     }
 </style>
 </head>
@@ -131,19 +164,12 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="menu-text">選單</span> <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="index.html" class="navbar-brand">MeiYang</a>
-            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">首頁</a></li>
                     <li><a href="system.html">各大系統</a></li>
-                    <li class="active"><a href="about.html">資訊補給</a></li> </ul>
+                    <li class="active"><a href="about.html">資訊補給</a></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -241,7 +267,7 @@
                             </ol>
                             <br>
                         </li>
-                        </ul>
+                    </ul>
                     <div style="text-align: center;">
                         <img src="static/img3/變形工時.jpg" alt="變形工時" />
                     </div>
@@ -273,7 +299,7 @@
                                 <li>變形工時須經工會同意﹐如無工會者﹐則須經勞資會議同意。</li>
                             </ol>
                         </li>
-                        </ul>
+                    </ul>
                     <div style="text-align: center;">
                         <img src="static/img3/變形工時.jpg" alt="變形工時" />
                     </div>
@@ -301,7 +327,7 @@
                                 <li>每日的正常工作時間不應超過8小時﹐且每週工時計算上限則設為40小時。</li>
                             </ol>
                         </li>
-                        </ul>
+                    </ul>
                     <div class="links">
                         <a href="https://reurl.cc/zqd910">　　第30條 &raquo;</a>
                     </div>
@@ -329,11 +355,11 @@
                                 <li>平日工作8小時內為法令規定之正常工作時間﹐08小時候後持續上班開始計算加班。</li>
                             </ol>
                         </li>
-                        </ul>
+                    </ul>
                     <div style="text-align: center;">
-                        <img src="static/img3/加班正職.png" style="max-height: 95%; max-width: 95%;" alt="加班正職" />
+                        <img src="static/img3/加班正職.png" alt="加班正職" />
                         <br><br>
-                        <img src="static/img3/加班兼職.png" style="max-height: 95%; max-width: 95%;" alt="加班兼職" />
+                        <img src="static/img3/加班兼職.png" alt="加班兼職" />
                     </div>
                     <div class="links">
                         <a>　勞動基準法</a><br>
@@ -367,7 +393,7 @@
     <hr/>
     <footer style="text-align: center;">
         <div style="text-align: center;">
-            <img src="assets/img1/00.個人專業圖像.png" class="footer-logo" alt="MYs Logo">
+            <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
         </div>
         <p style="color: var(--sub-text-color)">Email:yang750819@gmail.com</p>
         <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MYs-b1.0.0-11-29-2025</p>
