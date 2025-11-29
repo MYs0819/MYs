@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,50 +9,48 @@
     <link rel="stylesheet" type="text/css" href="static/app/content/site.css" />
     <script src="static/app/scripts/modernizr-2.6.2.js"></script>
     
-
 <style>
-    /* ====================== 配色/字級/元件設定區（可自行調整）====================== */
+    /* ==================== 配色/字級/元件設定區（可自行調整） ==================== */
     :root {
         /* -------- 1. 背景與文字顏色 -------- */
         --main-bg-color: #262626;       /* 整個網頁的深灰背景 */
-        --card-bg-color: #262626;       /* 個人介紹卡片的背景 */
+        --card-bg-color: #262626;       /* 個人介紹卡片的背景色 */
         --main-text-color: #FFFFFF;     /* 主要文字顏色 (白) */
-        --sub-text-color: #f3f3f3;      /* 次要文字顏色 (如頁尾 Email) */
+        --sub-text-color: #f3f3f3;      /* 次要文字顏色 (頁尾版權及mail) */
 
         /* -------- 2. 導航列 (最上方選單) -------- */
-        --nav-brand-size: 25px;         /* 左上角 MeiYang LOGO 的字體大小 */
-        --nav-item-size: 15px;          /* 選單選項 (各大系統、資訊補給) 的字體大小 */
+        --nav-brand-size: 25px;         /* LOGO 字體大小 (數字越大字越大) */
+        --nav-item-size: 15px;          /* 選單選項字體大小 (數字越大字越大) */
 
         /* -------- 3. 標題字體大小 -------- */
-        --card-title-size: 36px;        /* 個人介紹標題 (MeiYang) 大小 */
-        --section-title-size: 25px;     /* 各區塊標題 (音樂作品、業務事項) 大小 */
+        --card-title-size: 36px;        /* 個人介紹標題 (MeiYang) 大小 (數字越大字越大) */
+        --section-title-size: 25px;     /* 各區塊標題 (音樂作品) 大小 (數字越大字越大) */
 
         /* -------- 4. 按鈕設定 (Buttons) -------- */
         /* [共用設定] */
-        --btn-radius: 5px;              /* 按鈕圓角 (0px=直角, 10px=圓角, 50px=膠囊狀) */
-        --btn-font-size: 14px;          /* 按鈕文字大小 */
-        --btn-padding: 6px 12px;        /* 按鈕內距 (上下 左右) - 決定按鈕胖瘦 */
+        --btn-radius: 5px;              /* 按鈕圓角 (0px=直角, 10px=圓角, 數字越大越圓) */
+        --btn-font-size: 14px;          /* 按鈕文字大小 (數字越大字越大) */
+        --btn-padding: 6px 12px;        /* 按鈕內距: 第一個數字是上下，第二個是左右 (數字越大按鈕越胖) */
 
-        /* [主要按鈕] (例如：點擊察看、打開詳細) - 對應 class="btn-primary" */
-        --btn-p-bg: #337ab7;            /* 背景顏色 (原本是藍色) */
-        --btn-p-text: #ffffff;          /* 文字顏色 */
-        --btn-p-border: #2e6da4;        /* 邊框顏色 */
+        /* [主要按鈕] (例如：點擊察看) - 對應 class="btn-primary" */
+        --btn-p-bg: #337ab7;            /* 背景顏色 (藍色) */
+        --btn-p-text: #ffffff;          /* 文字顏色 (白) */
+        --btn-p-border: #2e6da4;        /* 邊框顏色 (深藍) */
 
-        /* [次要按鈕] (例如：彈跳視窗的關閉) - 對應 class="btn-secondary" */
-        --btn-s-bg: #ffffff;            /* 背景顏色 (原本是白色) */
-        --btn-s-text: #333333;          /* 文字顏色 */
-        --btn-s-border: #cccccc;        /* 邊框顏色 */
+        /* [次要按鈕] (例如：關閉) - 對應 class="btn-secondary" */
+        --btn-s-bg: #ffffff;            /* 背景顏色 (白) */
+        --btn-s-text: #333333;          /* 文字顏色 (黑) */
+        --btn-s-border: #cccccc;        /* 邊框顏色 (灰) */
 
-        /* -------- 5. 輸入框與下拉選單 (Input / Select) - 預留擴充用 -------- */
-        /* 雖然目前網頁沒用到，但設定好後，未來新增 <input> 就會自動套用 */
+        /* -------- 5. 輸入框與下拉選單 (預留擴充用) -------- */
         --input-bg: #ffffff;            /* 輸入框背景色 */
         --input-text: #000000;          /* 輸入內容文字顏色 */
-        --input-border: #cccccc;        /* 輸入框邊框顏色 */
-        --input-radius: 4px;            /* 輸入框圓角 */
-        --input-height: 34px;           /* 輸入框高度 */
+        --input-border: #cccccc;        /* 邊框顏色 */
+        --input-radius: 4px;            /* 輸入框圓角 (數字越大越圓) */
+        --input-height: 34px;           /* 輸入框高度 (數字越大框越高) */
     }
 
-    /* ====================== 設定區結束，下方為樣式邏輯 (建議勿動）====================== */
+    /* ==================== 設定區結束，下方為樣式邏輯 (建議勿動)==================== */
     body {
         background-color: var(--main-bg-color);
         color: var(--main-text-color);
@@ -61,37 +58,58 @@
 
     .container.body-content {
         background-color: var(--main-bg-color);
-        max-width: 2000px !important;
-        padding-left: 200px;
-        padding-right: 200px;
+        max-width: 2000px !important;  /* 最大寬度 (數字越大，網頁在寬螢幕上能撐越開) */
+        padding-left: 200px;           /* 左邊留白距離 (數字越大，內容離左邊越遠) */
+        padding-right: 200px;          /* 右邊留白距離 (數字越大，內容離右邊越遠) */
     }
 
-    /* 導航列 */
+    /* 導航列字級套用 */
     .navbar-brand { font-size: var(--nav-brand-size) !important; }
     .navbar-nav li a { font-size: var(--nav-item-size) !important; }
 
-    /* 個人介紹卡片 */
+    /* 個人介紹卡片區域 */
     .happy {
-        width: 800px;
-        margin: 20px auto;
-        border: solid 1px gray;
+        width: 800px;                  /* 卡片總寬度 (數字越大，卡片越寬) */
+        margin: 20px auto;             /* 外距：上下 20px (數字越大離上下越遠)，左右自動置中 */
+        border: solid 1px gray;        /* 邊框：實線 1px 灰色 (數字越大框線越粗) */
         background-color: var(--card-bg-color);
         overflow: hidden; 
     }
-    .bdcard { width: 300px; float: left; padding: 20px; }
-    .bdcard img { display: block; width: 100%; }
-    .bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--main-text-color); }
-    .bdtext h1 { font-size: var(--card-title-size); margin-top: 20px; margin-bottom: 10px; }
+
+    .bdcard {
+        width: 300px;                  /* 左邊照片區寬度 (數字越大，照片區越寬) */
+        float: left; 
+        padding: 20px;                 /* 內距：內容離邊框的距離 (數字越大，照片離邊框越遠) */
+    }
+
+    .bdcard img {
+        display: block;
+        width: 100%;                   /* 圖片寬度：佔滿容器的 100% */
+    }
+
+    .bdtext {
+        float: right; 
+        width: 430px;                  /* 右邊文字區寬度 (數字越大，文字區越寬) */
+        padding: 20px 20px 0px 0px;    /* 內距順序：上 右 下 左 (數字越大該方向留白越多) */
+        color: var(--main-text-color);
+    }
+    
+    .bdtext h1 {
+        font-size: var(--card-title-size);
+        margin-top: 20px;              /* 標題離上方距離 (數字越大，離上面越遠) */
+        margin-bottom: 10px;           /* 標題離下方距離 (數字越大，離下面越遠) */
+    }
 
     /* 區塊標題 */
     .section-title {
         font-size: var(--section-title-size) !important;
         color: var(--main-text-color) !important;
-        font-weight: bold;
+        font-weight: bold;             /* 粗體 */
     }
 
-    /* ====================== 元件樣式覆蓋 (將變數套用到 Bootstrap 元件)====================== */   
-    /* 1. 主要按鈕 (btn-primary) */
+    /* -------- 元件樣式覆蓋 (將變數套用到 Bootstrap 元件)-------- */
+    
+    /* 主要按鈕 (btn-primary) */
     .btn-primary {
         background-color: var(--btn-p-bg) !important;
         color: var(--btn-p-text) !important;
@@ -101,7 +119,7 @@
         padding: var(--btn-padding) !important;
     }
 
-    /* 2. 次要按鈕 (btn-secondary 或 btn-default) */
+    /* 次要按鈕 (btn-secondary) */
     .btn-secondary, .btn-default {
         background-color: var(--btn-s-bg) !important;
         color: var(--btn-s-text) !important;
@@ -111,17 +129,16 @@
         padding: var(--btn-padding) !important;
     }
 
-    /* 3. 輸入框與選單 (input, select, textarea) */
+    /* 輸入框與選單 (input, select, textarea) */
     input, select, textarea, .form-control {
         background-color: var(--input-bg) !important;
         color: var(--input-text) !important;
         border: 1px solid var(--input-border) !important;
         border-radius: var(--input-radius) !important;
-        height: var(--input-height) !important; /* 注意：textarea 可能需要另外設高度 */
+        height: var(--input-height) !important;
     }
 
 </style>
-
 </head>
 
 <body>
@@ -149,7 +166,7 @@
 
     <div class="happy">
         <div class="bdcard">
-            <img src="static/img1/00.jpg" />
+            <img src="static/img1/00.個人專業圖像.png" />
         </div>
         <div class="bdtext">
             <h1>MeiYang</h1>
@@ -167,7 +184,7 @@
         <div style="text-align:center">
             <h2 class="section-title">音樂作品</h2>
         </div>
-        <img src="static/img1/01.jpg" style="max-height: 100%; max-width: 100%;" alt="Alternate Text" />
+        <img src="static/img1/01.個人音樂圖像.jpg" style="max-height: 100%; max-width: 100%;" alt="Alternate Text" />
         <br>
         <div class="links">
             <br>
@@ -215,7 +232,7 @@
                         <li>參與歌詞</li>
                         <li>2020-02-10-上架</li>
                     </ul>
-                    <img src="static/img1/04.jpg" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <img src="static/img1/AA.你我一起.jpg" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
                     <br>
                 </li>
                 <li>
@@ -224,7 +241,7 @@
                         <li>參與歌詞</li>
                         <li>2020-02-10-上架</li>
                     </ul>
-                    <img src="static/img1/05.png" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <img src="static/img1/AB.面具.png" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
                     <br>
                 </li>
                 <li>
@@ -233,7 +250,7 @@
                         <li>復刻愛情首部曲</li>
                         <li>2021-08-30-上架</li>
                     </ul>
-                    <img src="static/img1/02.jpg" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <img src="static/img1/02.妳還記得嗎.jpg" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
                     <br>
                 </li>
                 <li>
@@ -242,4 +259,44 @@
                         <li>紀念愛情上部曲</li>
                         <li>2025-05-20-上架</li>
                     </ul>
-                    <img src="static/img1/03.jpg" style="max-height: 40%; max-width: 40
+                    <img src="static/img1/03.再見了親愛的.jpg" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <br>
+                </li>
+                <li>
+                    『 疫起回家 』
+                    <ul>
+                        <li>紀念愛情上部曲</li>
+                        <li>2025-08-23-上架</li>
+                    </ul>
+                    <img src="static/img1/04.疫起回家.png" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <br>
+                </li>
+                <li>
+                    『 告白の搖滾詩 』
+                    <ul>
+                        <li>紀念愛情上部曲</li>
+                        <li>2025-08-29-上架</li>
+                    </ul>
+                    <img src="static/img1/AC.告白的搖滾詩.png" style="max-height: 40%; max-width: 40%;" alt="Alternate Text" />
+                    <br>
+                </li>
+            </ol>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>    
+        <hr/>
+        <footer style="text-align: center;">
+            <p style="color: var(--sub-text-color)">Email:mayday750819@gmail.com</p>
+            <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MeiYang Version:b1.0.0</p>
+</footer>
+    </div>
+
+    <script src="static/app/scripts/jquery-1.10.2.js"></script>
+    <script src="static/app/scripts/bootstrap.js"></script>
+    <script src="static/app/scripts/respond.js"></script>
+
+</body>
+</html>
