@@ -10,9 +10,9 @@
     <script src="static/app/scripts/modernizr-2.6.2.js"></script>
     
 <style>
-    /* -------------- 配色/字級/元件設定區（可自行調整） -------------- */
+    /* -------------- 配色/字級/元件/圖片設定區（可自行調整） -------------- */
     :root {
-        /* -------- 1. 背景顏色設定 (Backgrounds) -------- */
+        /* -------- 1. 背景顏色設定 -------- */
         /* [設定 A：指定黑色漸層] */
         --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
         /* [設定 B：備用] */
@@ -20,97 +20,122 @@
         /* [設定 C：備用] */
         --bg-style-3: #262626;
 
-        /* -------- 2. 文字與卡片顏色 -------- */
-        --main-text-color: #FFFFFF;     /* 主要文字顏色 (白) */
-        --sub-text-color: #f3f3f3;      /* 次要文字顏色 (灰白) */
-        --card-bg-color: #262626;       /* 個人介紹卡片的背景色 */
-        --modal-text-color: #333333;    /* 彈跳視窗內的文字顏色 (深色) */
+        /* -------- 2. 字體與顏色 -------- */
+        --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* 圓體 */
+        --main-text-color: #FFFFFF;     /* 主要文字 (白) */
+        --sub-text-color: #f3f3f3;      /* 次要文字 (灰白) */
+        --card-bg-color: #262626;       /* 個人卡片背景 */
+        --modal-text-color: #333333;    /* 視窗內文字 (深色) */
 
-        /* -------- 3. 導航列與選單 -------- */
-        --nav-brand-size: 25px;         /* LOGO 字體大小 (數字越大字越大) */
-        --nav-item-size: 15px;          /* 選單連結字體大小 (數字越大字越大) */
-        --nav-toggle-text-size: 14px;   /* 手機版「選單」文字大小 */
-        --nav-toggle-text-color: #fff;  /* 手機版「選單」文字顏色 */
+        /* -------- 3. 導航列設定 -------- */
+        --nav-item-size: 16px;          /* 選單文字大小 */
 
-        /* -------- 4. 內容與標題 -------- */
-        --profile-name-size: 36px;      /* 個人卡片名字 (MeiYang) 大小 (數字越大字越大) */
-        --section-title-size: 25px;     /* 區塊標題 (音樂作品) 大小 (數字越大字越大) */
+        /* -------- 4. 圖片尺寸控制 -------- */
+        /* [內容圖片 - 如音樂作品封面] */
+        --content-img-width-pc: 100%;   /* 電腦版圖片寬度 */
+        --content-img-width-mobile: 100%; /* 手機版圖片寬度 */
         
-        /* -------- 5. 圖片設定 -------- */
-        --footer-logo-height: 40px;     /* 頁尾 Logo 高度 (數字越大圖越大) */
+        /* [頁尾 Logo] */
+        --footer-logo-width-pc: 150px;  /* 電腦版 Logo 寬度 (數字越大圖越大) */
+        --footer-logo-width-mobile: 100px; /* 手機版 Logo 寬度 (數字越大圖越大) */
+
+        /* -------- 5. 內容文字大小 -------- */
+        --profile-name-size: 36px;      /* 個人名字 (MeiYang) */
+        --section-title-size: 25px;     /* 區塊標題 (音樂作品) */
     }
 
-    /* -------------- 設定區結束，下方為樣式邏輯 (建議勿動) -------------- */
+    /* -------------- 設定區結束 -------------- */
 
     /* 基本設定 */
     body {
         background: var(--bg-style-1);
         background-attachment: fixed;
         color: var(--main-text-color);
-        overflow-x: hidden;             /* ★重要：強制禁止左右滑動 */
+        font-family: var(--main-font);  /* 套用圓體 */
+        overflow-x: hidden;             /* 強制禁止左右滑動 */
+        padding-top: 60px;              /* 避開導航列 */
     }
 
-    /* 容器設定 (RWD) */
+    /* RWD 容器設定 */
     .container.body-content {
-        max-width: 2000px !important;   /* 電腦版最大寬度 (數字越大越寬) */
-        padding-left: 200px;            /* 電腦版左邊留白 (數字越大留白越多) */
-        padding-right: 200px;           /* 電腦版右邊留白 (數字越大留白越多) */
+        max-width: 2000px !important;
+        padding-left: 200px;
+        padding-right: 200px;
     }
 
-    /* ★ 手機版專用設定 (螢幕 < 768px) */
+    /* 手機版專用設定 (螢幕小於 768px) */
     @media (max-width: 768px) {
         .container.body-content {
-            padding-left: 15px !important;  /* 手機版：縮小左右留白 */
+            padding-left: 15px !important;
             padding-right: 15px !important;
         }
-        /* 個人介紹卡片在手機上變成直式排列，且寬度 100% */
+        /* 個人介紹卡片變直式 */
         .happy {
             width: 100% !important;
             height: auto !important;
         }
         .bdcard, .bdtext {
-            width: 100% !important;     /* 內容寬度佔滿 */
-            float: none !important;     /* 取消左右浮動，變垂直排列 */
+            width: 100% !important;
+            float: none !important;
             padding: 10px !important;
         }
+        /* 圖片設定 */
         img {
             max-width: 100% !important;
             height: auto !important;
         }
     }
 
-    /* 導航列樣式 */
-    .navbar-inverse { background-color: rgba(0,0,0,0.8); border: none; }
-    .navbar-brand { font-size: var(--nav-brand-size) !important; }
-    .navbar-nav li a { font-size: var(--nav-item-size) !important; }
-
-    /* ★ 手機版選單按鈕 (三條線 + 文字) */
-    .navbar-toggle .menu-text {
-        color: var(--nav-toggle-text-color);
-        font-size: var(--nav-toggle-text-size);
-        float: left;
-        margin-right: 5px;
-        margin-top: 1px;
+    /* -------- 導航列 (強制橫排) -------- */
+    .navbar-inverse { background-color: rgba(0,0,0,0.9); border: none; }
+    
+    .navbar-collapse.collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+        text-align: center;
+    }
+    .navbar-header { display: none; } /* 隱藏漢堡選單與品牌 */
+    
+    .navbar-nav {
+        float: none !important;
+        display: inline-block !important;
+        margin: 0 auto;
+    }
+    .navbar-nav > li { float: left; }
+    
+    .navbar-nav > li > a {
+        font-size: var(--nav-item-size);
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: #ddd !important;
+    }
+    .navbar-nav > li.active > a {
+        color: #fff !important;
         font-weight: bold;
+        background-color: transparent !important;
+        text-decoration: underline;
     }
 
-    /* 個人介紹卡片樣式 */
+    /* 個人介紹卡片 */
     .happy {
-        width: 800px;                   /* 卡片總寬度 (數字越大卡片越寬) */
-        margin: 20px auto;              /* 上下距離 20px，左右置中 */
-        border: solid 1px gray;         /* 邊框：1px 實線灰色 (數字越大框線越粗) */
+        width: 800px;
+        margin: 20px auto;
+        border: solid 1px gray;
         background-color: var(--card-bg-color);
-        overflow: hidden;               /* 避免內容溢出 */
+        overflow: hidden; 
     }
     .bdcard {
-        width: 300px;                   /* 左側圖片區寬度 (數字越大越寬) */
-        float: left;                    /* 向左靠齊 */
-        padding: 20px;                  /* 內距 (數字越大，圖片離邊框越遠) */
+        width: 300px;
+        float: left; 
+        padding: 20px;
     }
+    .bdcard img { display: block; width: 100%; }
     .bdtext {
-        float: right;                   /* 向右靠齊 */
-        width: 430px;                   /* 右側文字區寬度 (數字越大越寬) */
-        padding: 20px 20px 0px 0px;     /* 上 右 下 左 的留白 */
+        float: right; 
+        width: 430px;
+        padding: 20px 20px 0px 0px;
         color: var(--main-text-color);
     }
     .bdtext h1 {
@@ -133,18 +158,32 @@
         border-radius: 5px;
     }
 
-    /* 彈跳視窗內容文字 */
+    /* 彈跳視窗內容 */
     .modal-content {
         color: var(--modal-text-color);
         text-align: left;
     }
+    .modal-body img {
+        /* 套用變數設定 */
+        width: var(--content-img-width-pc);
+        height: auto;
+    }
+    @media (max-width: 768px) {
+        .modal-body img {
+            width: var(--content-img-width-mobile);
+        }
+    }
 
     /* 頁尾 Logo */
     .footer-logo {
-        height: var(--footer-logo-height);
-        width: auto;
+        width: var(--footer-logo-width-pc);
+        height: auto;
         margin-bottom: 10px;
-        display: inline-block;
+    }
+    @media (max-width: 768px) {
+        .footer-logo {
+            width: var(--footer-logo-width-mobile);
+        }
     }
 </style>
 </head>
@@ -152,17 +191,10 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="menu-text">選單</span> <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="index.html" class="navbar-brand">MeiYang</a>
-            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">首頁</a></li> <li><a href="system.html">各大系統</a></li>
+                    <li class="active"><a href="index.html">首頁</a></li>
+                    <li><a href="system.html">各大系統</a></li>
                     <li><a href="about.html">資訊補給</a></li>
                 </ul>
             </div>
@@ -173,7 +205,7 @@
 
     <div class="happy">
         <div class="bdcard">
-            <img src="assets/img1/MYs_logo_去背.png" alt="個人圖像" />
+            <img src="assets/img1/00.個人專業圖像.png" alt="個人圖像" />
         </div>
         <div class="bdtext">
             <h1>MeiYang</h1>
@@ -236,7 +268,7 @@
                                 <li>參與歌詞</li>
                                 <li>2020-02-10-上架</li>
                             </ul>
-                            <img src="assets/img1/AA.你我一起.jpg" style="max-height: 40%; max-width: 40%;" alt="你我一起" />
+                            <img src="assets/img1/AA.你我一起.jpg" alt="你我一起" />
                             <br>
                         </li>
                         <li>
@@ -245,7 +277,7 @@
                                 <li>參與歌詞</li>
                                 <li>2020-02-10-上架</li>
                             </ul>
-                            <img src="assets/img1/AB.面具.png" style="max-height: 40%; max-width: 40%;" alt="面具" />
+                            <img src="assets/img1/AB.面具.png" alt="面具" />
                             <br>
                         </li>
                         <li>
@@ -254,7 +286,7 @@
                                 <li>復刻愛情首部曲</li>
                                 <li>2021-08-30-上架</li>
                             </ul>
-                            <img src="assets/img1/02.妳還記得嗎.jpg" style="max-height: 40%; max-width: 40%;" alt="妳還記得嗎" />
+                            <img src="assets/img1/02.妳還記得嗎.jpg" alt="妳還記得嗎" />
                             <br>
                         </li>
                         <li>
@@ -263,25 +295,25 @@
                                 <li>紀念愛情上部曲</li>
                                 <li>2025-05-20-上架</li>
                             </ul>
-                            <img src="assets/img1/03.再見了親愛的.jpg" style="max-height: 40%; max-width: 40%;" alt="再見了親愛的" />
+                            <img src="assets/img1/03.再見了親愛的.jpg" alt="再見了親愛的" />
                             <br>
                         </li>
                         <li>
                             『 疫起回家 』
                             <ul>
-                                <li>生活紀錄單曲</li>
+                                <li>紀念愛情上部曲</li>
                                 <li>2025-08-23-上架</li>
                             </ul>
-                            <img src="assets/img1/04.疫起回家.png" style="max-height: 40%; max-width: 40%;" alt="疫起回家" />
+                            <img src="assets/img1/04.疫起回家.png" alt="疫起回家" />
                             <br>
                         </li>
                         <li>
                             『 告白の搖滾詩 』
                             <ul>
-                                <li>告白紀錄單曲</li>
+                                <li>紀念愛情上部曲</li>
                                 <li>2025-08-29-上架</li>
                             </ul>
-                            <img src="assets/img1/AC.告白的搖滾詩.png" style="max-height: 40%; max-width: 40%;" alt="告白の搖滾詩" />
+                            <img src="assets/img1/AC.告白的搖滾詩.png" alt="告白的搖滾詩" />
                             <br>
                         </li>
                     </ol>
@@ -296,7 +328,7 @@
     <hr/>
     <footer style="text-align: center;">
         <div style="text-align: center;">
-            <img src="assets/img1/00.個人專業圖像.png" class="footer-logo" alt="MYs Logo">
+            <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
         </div>
         <p style="color: var(--sub-text-color)">Email:mayday750819@gmail.com</p>
         <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MeiYang Version:b1.0.0</p>
