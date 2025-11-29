@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系統操作 - MeiYang</title>
+    
+    <link rel="stylesheet" type="text/css" href="static/app/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/app/content/site.css" />
+    <script src="static/app/scripts/modernizr-2.6.2.js"></script>
+    
+<style>
+    /* -------------- 配色/字級/元件設定區（可自行調整） -------------- */
+    :root {
+        /* -------- 1. 背景顏色設定 (Backgrounds) -------- */
+        /* [設定 A：你指定的黑色漸層] - 目前套用這個 */
+        --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
+        
+        /* [設定 B：預留備用 - 深灰漸層] */
+        --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);
+
+        /* [設定 C：預留備用 - 純色] */
+        --bg-style-3: #262626;
+
+        /* -------- 2. 文字顏色 (Colors) -------- */
+        --main-text-color: #FFFFFF;     /* 主要文字顏色 (白) */
+        --sub-text-color: #f3f3f3;      /* 次要文字顏色 (灰白) */
+        --modal-text-color: #333333;    /* 彈跳視窗內的文字顏色 (建議深色，因視窗背景是白的) */
+
+        /* -------- 3. 導航列與選單 (Navbar) -------- */
+        --nav-brand-size: 25px;         /* 左上角 LOGO 字體大小 (數字越大字越大) */
+        --nav-item-size: 15px;          /* 選單連結字體大小 (數字越大字越大) */
+        --nav-toggle-text-size: 14px;   /* 手機版「選單」兩個字的大小 (數字越大字越大) */
+        --nav-toggle-text-color: #fff;  /* 手機版「選單」兩個字的顏色 */
+
+        /* -------- 4. 頁面標題與內容 -------- */
+        --section-title-size: 40px;     /* 大標題大小，如"四週變形工時班表" (數字越大字越大) */
+        --card-title-size: 25px;        /* 卡片小標題大小，如"預排開放" (數字越大字越大) */
+        
+        /* -------- 5. 圖片與版面設定 -------- */
+        --footer-logo-height: 40px;     /* 頁尾 Logo 圖片高度 (數字越大圖越大) */
+    }
+
+    /* -------------- 設定區結束，下方為樣式邏輯 (建議勿動) -------------- */
+    /* 基本設定 */
+    body {
+        background: var(--bg-style-1);  /* 套用設定 A 的背景 */
+        background-attachment: fixed;   /* 背景固定不動，滑動時更有質感 */
+        color: var(--main-text-color);
+        overflow-x: hidden;             /* ★重要：強制禁止左右滑動，解決手機版面過寬問題 */
+    }
+
+    /* 容器設定 (RWD 響應式關鍵) */
+    .container.body-content {
+        max-width: 2000px !important;   /* 電腦版：最大寬度 (數字越大越寬) */
+        padding-left: 200px;            /* 電腦版：左邊留白距離 (數字越大留白越多) */
+        padding-right: 200px;           /* 電腦版：右邊留白距離 (數字越大留白越多) */
+    }
+
+    /* ★ 手機版專用設定 (螢幕寬度小於 768px 時生效) */
+    @media (max-width: 768px) {
+        .container.body-content {
+            padding-left: 15px !important;  /* 手機版：縮小左邊留白至 15px */
+            padding-right: 15px !important; /* 手機版：縮小右邊留白至 15px */
+        }
+        .indexSystemInfo {
+            padding: 15px !important;       /* 手機版：縮小區塊內距 */
+        }
+        /* 讓圖片在手機上自動縮放，不會破版 */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    }
+
+    /* 導航列樣式 */
+    .navbar-inverse { background-color: rgba(0,0,0,0.8); border: none; }
+    .navbar-brand { font-size: var(--nav-brand-size) !important; }
+    .navbar-nav li a { font-size: var(--nav-item-size) !important; }
+
+    /* ★ 手機版選單按鈕 (三條線 + 文字) */
+    .navbar-toggle .menu-text {
+        color: var(--nav-toggle-text-color);
+        font-size: var(--nav-toggle-text-size);
+        float: left;            /* 讓文字排在三條線左邊 */
+        margin-right: 5px;      /* 文字跟三條線的距離 (數字越大離越遠) */
+        margin-top: 1px;        /* 微調垂直位置 */
+        font-weight: bold;      /* 粗體 */
+    }
+
+    /* 內容區塊樣式 */
+    .indexSystemInfo {
+        padding: 50px;          /* 區塊內距 (數字越大，內容離邊框越遠) */
+        margin-bottom: 30px;    /* 區塊與下方區塊的距離 (數字越大離越遠) */
+        border-radius: 10px;    /* 區塊圓角 (數字越大越圓) */
+    }
+
+    /* 按鈕樣式 (Bootstrap 覆蓋) */
+    .btn-primary {
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+    
+    /* 彈跳視窗 (Modal) 修正 */
+    .modal-content {
+        color: var(--modal-text-color); /* 強制設定視窗內文字為深色 */
+        text-align: left;               /* 內容靠左對齊 */
+    }
+    
+    /* 頁尾 Logo 樣式 */
+    .footer-logo {
+        height: var(--footer-logo-height); 
+        width: auto;           /* 寬度自動調整 */
+        margin-bottom: 10px;   /* 跟版權文字的距離 */
+        display: inline-block;
+    }
+
+</style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="menu-text">選單</span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">MeiYang</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首頁</a></li> 
+                    <li class="active"><a href="system.html">各大系統</a></li> <li><a href="about.html">資訊補給</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+    <div class="indexSystemInfo" style="background: linear-gradient(180deg,rgba(121, 130, 130, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);">
+        <h1 style="text-align:center">📆 </h1>
+        <h2 style="text-align: center; font-size: var(--section-title-size); color: #FFFFFF">四週變形工時班表</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">預排開放</h2>
+                <p style="color:#f3f3f3">
+                    開放連結為底下說明:<br>
+                    1. 點擊記事本公告內預排連結前往系統.<br>
+                    2. 查看E-mail授權通知.
+                </p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-01">
+                    點擊察看
+                </button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">預排關閉</h2>
+                <p style="color:#f3f3f3">
+                    於時間內完成排班:<br>
+                    1. 預排班表關閉後,移除正兼職權限.<br>
+                    2. 預排完成,開啟主管權限調整人力.
+                </p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-02">
+                    點擊察看
+                </button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">班表公開</h2>
+                <p style="color:#f3f3f3">
+                    查看更新完成後班表:<br>
+                    1. 於記事本內總班表查審.<br>
+                    2. 班表公開後預排班表權限將失效.
+                </p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-03">
+                    點擊察看
+                </button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">班表說明</h2>
+                <p style="color:#f3f3f3">
+                    班表分類說明如下:<br>
+                    1. 特休概覽表.<br>
+                    2. 國定及原民日概覽表.
+                </p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-04">
+                    點擊察看
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modal-01" tabindex="-1" role="dialog" aria-labelledby="label-01" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title" id="label-01" style="text-align:center">預排開放</h2>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-unstyled">
+                        <li style="margin-bottom:15px">
+                            【 每三週預排流程 】
+                            <ol>
+                                <li>第一天﹕10:00後開啟《劃休預排系統》。</li>
+                                <li>第三天﹕22:00後關閉《劃休預排系統》。</li>
+                                <li>第六天﹕班表公開《總班表》。</li>
+                            </ol>
+                            <div style="text-align: center;">
+                                <img src="static/img2/班表1.jpg" alt="班表1" />
+                            </div>
+                        </li>
+                        <li style="margin-bottom:15px">
+                            【 快速簡易判斷 】
+                            <ol>
+                                <li>正職紅線隔日為預排開啟日。</li>
+                                <li>如下方圖片所示﹕</li>
+                            </ol>
+                            <div style="text-align: center;">
+                                <img src="static/img2/班表2.jpg" alt="班表2" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-02" tabindex="-1" role="dialog" aria-labelledby="label-02" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title" id="label-02" style="text-align:center">預排關閉</h2>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-unstyled">
+                        <li style="margin-bottom:15px">
+                            『 正職同仁適用 』
+                            <ol>
+                                <li>適用四週變形工時。</li>
+                                <li>四週時數得達160小時。</li>
+                                <li>每二週內應安排兩天例假日﹐共四天例假日。</li>
+                            </ol>
+                        </li>
+                        <li style="margin-bottom:15px">
+                            『 兼職同仁適用 』
+                            <ol>
+                                <li>適用一例一休。</li>
+                                <li>雙週時數應達32小時﹐四週時數應達64小時。</li>
+                            </ol>
+                        </li>
+                        <li style="margin-bottom:15px">
+                            『 主管預排調整 』
+                            <ol>
+                                <li>四週內主管應再安排﹐四天休息日﹐共八天﹕四例﹑四休。</li>
+                            </ol>
+                        </li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <img src="static/img2/班表3.jpg" alt="班表3" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-03" tabindex="-1" role="dialog" aria-labelledby="label-03" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title" id="label-03" style="text-align:center">班表公開</h2>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-unstyled">
+                        <li style="margin-bottom:15px">
+                            【 檢視 】
+                            <ol>
+                                <li>班表公開後請上總班表檢視。</li>
+                                <li>如有問題﹐請盡速向排班主管反映。</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-04" tabindex="-1" role="dialog" aria-labelledby="label-04" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title" id="label-04" style="text-align:center">班表備註</h2>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-unstyled">
+                        <li style="margin-bottom:15px">
+                            【 特別休假概覽表 】
+                            <div style="text-align: center;">
+                                <img src="static/img2/班表4.jpg" alt="班表4" />
+                                <br><br>
+                                <img src="static/img2/班表5.jpg" alt="班表5" />
+                            </div>
+                        </li>
+                        <li>
+                            【 國定假日概覽表 】
+                            <div style="text-align: center;">
+                                <img src="static/img2/班表6.jpg" alt="班表6" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="indexSystemInfo" style="background: linear-gradient(2deg,rgba(4, 2, 41, 0.5) 0%, rgba(89, 45, 89, 0.6) 36%, rgba(138, 120, 120, 0.7) 100%);">
+        <h1 style="text-align:center">📑 </h1>
+        <h2 style="text-align: center; font-size: var(--section-title-size); color: #FFFFFF">異動班別審查系統</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">異動鍵入</h2>
+                <p style="color:#f3f3f3">依各團隊或職稱分類鍵入表單...</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-05">點擊察看</button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">異動說明</h2>
+                <p style="color:#f3f3f3">以下須特別注意: 異動別、歸屬列別...</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-06">點擊察看</button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">異動審核</h2>
+                <p style="color:#f3f3f3">於每週一審核上週一至日異動...</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-07">點擊察看</button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">異動備註</h2>
+                <p style="color:#f3f3f3">異動前後須知: 已發出提醒、說明及退件...</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-08">點擊察看</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modal-05" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">異動鍵入</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容請參照原稿...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+    <div class="modal fade" id="modal-06" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">異動說明</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容請參照原稿...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+    <div class="modal fade" id="modal-07" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">異動審核</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容請參照原稿...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+    <div class="modal fade" id="modal-08" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">異動備註</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容請參照原稿...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+
+
+    <div class="indexSystemInfo" style="background: linear-gradient(2deg,rgba(8, 1, 1, 0.5) 0%, rgba(18, 73, 74, 0.6) 71%, rgba(23, 108, 110, 0.7) 100%);">
+        <h1 style="text-align:center">📝 </h1>
+        <h2 style="text-align: center; font-size: var(--section-title-size); color: #FFFFFF">工時登記審查系統</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">出勤卡片</h2>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-09">點擊察看</button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">出勤鍵入</h2>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-10">點擊察看</button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">出勤審核</h2>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-11">點擊察看</button>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">審核備註</h2>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-12">點擊察看</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modal-09" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">出勤卡片</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+    <div class="modal fade" id="modal-10" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">出勤鍵入</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+    <div class="modal fade" id="modal-11" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">出勤審核</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+    <div class="modal fade" id="modal-12" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">出勤備註</h2></div><div class="modal-body"><ul class="list-unstyled"><li>內容...</li></ul></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+
+
+    <div class="indexSystemInfo" style="background: linear-gradient(1deg,rgba(77, 22, 22, 0.5) 0%, rgba(65, 60, 115, 0.6) 71%, rgba(64, 64, 125, 0.7) 100%);">
+        <h1 style="text-align:center">✍️ </h1>
+        <h2 style="text-align: center; font-size: var(--section-title-size); color: #FFFFFF">薪資明細簽署系統</h2>
+        <p style="text-align:center;">
+            <a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">按此進入 &raquo;</a>
+        </p>
+        <div class="row">
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">薪資單審核</h2>
+                <p style="color:#f3f3f3">每月七號發送薪資單...</p>
+                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">薪資單簽署</h2>
+                <p style="color:#f3f3f3">1. 簽署完成後,視為無異議...</p>
+                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">核銷截止日</h2>
+                <p style="color:#f3f3f3">九號23:59前未回復...</p>
+                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+            </div>
+            <div class="col-md-3">
+                <h2 style="font-size: var(--card-title-size); color: #f3f3f3; font-weight: bold;">薪資匯款日</h2>
+                <p style="color:#f3f3f3">薪資於每月十號匯入...</p>
+                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+
+    <hr/>
+    <footer style="text-align: center;">
+        <div style="text-align: center;">
+            <img src="assets/img1/00.個人專業圖像.png" class="footer-logo" alt="MYs Logo">
+        </div>
+        <p style="color: #f3f3f3">Email:mayday750819@gmail.com</p>
+        <p style="color: #f3f3f3">&copy; Copyright 2025 MeiYang Version:b1.0.0</p>
+    </footer>
+
+    </div>
+    
+    <script src="static/app/scripts/jquery-1.10.2.js"></script>
+    <script src="static/app/scripts/bootstrap.js"></script>
+    <script src="static/app/scripts/respond.js"></script>
+</body>
+</html>
