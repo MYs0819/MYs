@@ -38,8 +38,8 @@
     --footer-logo-width-mobile: 100px; /* 手機版 Logo 寬度 */
 
     /* -------- 5. 標題大小 -------- */
-    /* 大標題統一大小 */
-    --section-title-size: 35x;     
+    /* 大標題統一大小 - 例：四週變形工時班表、異動班別審查系統、勞資知識補給站、音樂作品 */
+    --section-title-size: 40x;     
     
     /* 子卡片標題大小 */
     --card-title-size: 20px;        
