@@ -28,7 +28,7 @@
     /* -------- 3. 導航列設定 (最上方選單) -------- */
     /* 選單文字大小 */
     /* 舉例：最上面的 [首頁] [各大系統] [資訊補給] 這幾個字 */
-    --nav-item-size: 16px;          
+    --nav-item-size: 24px;          
     
     /* 選單文字上下間距 */
     /* 舉例：決定導航列那一條黑色的要多「厚」，數字越大越厚 */
@@ -46,7 +46,7 @@
     
     /* [頁尾 Logo] */
     /* 舉例：最下面版權宣告上面的那個 MYs Logo 圖片 */
-    --footer-logo-width-pc: 150px;    /* 電腦版 Logo 寬度 */
+    --footer-logo-width-pc: 990x;    /* 電腦版 Logo 寬度 */
     --footer-logo-width-mobile: 100px; /* 手機版 Logo 寬度 */
 
     /* -------- 5. 標題大小 -------- */
@@ -60,7 +60,7 @@
 
     /* -------- 6. 卡片內文設定 (獨立控制) -------- */
     /* 舉例：預排開放下面的說明文字「開放連結為底下說明...」 */
-    --card-text-color: #5b0f00;     /* 內文顏色 */
+    --card-text-color: #f3f3f3;     /* 內文顏色 */
     --card-text-size: 14px;         /* 內文大小 */
     
     --card-text-line-height: 1.5;   /* 內文行高 (行與行的距離) */
@@ -68,12 +68,12 @@
 
     /* -------- 7. 頁尾版權設定 (獨立控制) -------- */
     /* 舉例：最下面的 Email:mayday... 以及 Copyright... */
-    --footer-text-color: #f3f3f3;   /* 文字顏色 */
+    --footer-text-color: #d9d9d9;   /* 文字顏色 */
     --footer-text-size: 14px;       /* 文字大小 */
     
     /*  -------- 頁尾間距控制 -------- */
-    --footer-logo-margin-top: 30px;    /* ★ Logo 圖片跟上方內容區塊的距離 (覺得太貼就調大這個) */
-    --footer-logo-margin-bottom: 3px;  /* Logo 圖片跟下方 Email 的距離 */
+    --footer-logo-margin-top: 10px;    /* ★ Logo 圖片跟上方內容區塊的距離 (覺得太貼就調大這個) */
+    --footer-logo-margin-bottom: 1px;  /* Logo 圖片跟下方 Email 的距離 */
     --footer-text-margin-y: 4px;       /* Email 跟 Copyright 每行文字上下的距離 */
 
     /* -------- 8. 按鈕設定 -------- */
@@ -88,7 +88,7 @@
     --profile-name-margin-top: 0px; 
     
     /* -------- 10. 彈跳視窗顏色 -------- */
-    --modal-bg-color: #FFFFFF;
+    --modal-bg-color: #e6b8af;
 }
 
 /* ================ 設定區結束，下方為樣式邏輯 (建議勿動) ================ */
