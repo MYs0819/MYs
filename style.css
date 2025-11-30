@@ -39,7 +39,7 @@
 
     /* -------- 5. 標題大小 -------- */
     /* 大標題統一大小 */
-    --section-title-size: 40px;     
+    --section-title-size: 35x;     
     
     /* 子卡片標題大小 */
     --card-title-size: 20px;        
@@ -62,7 +62,7 @@
     --footer-text-size: 14px;       
 
     /* -------- 8. 按鈕設定 -------- */
-    --btn-radius: 5px;              /* 按鈕圓角 */
+    --btn-radius: 15px;              /* 按鈕圓角 */
     --btn-font-size: 14px;          /* 按鈕文字大小 */
     --btn-p-bg: #337ab7;            /* 主要按鈕背景 (藍) */
     --btn-p-border: #2e6da4;        /* 主要按鈕邊框 */
@@ -83,7 +83,7 @@
     --modal-title-size: 22px;       /* 大小 */
     
     /* 視窗內文 (中間的內容) */
-    --modal-text-color: #333333;    /* 顏色 */
+    --modal-text-color: #bcbcbc;    /* 顏色 */
     --modal-text-size: 16px;        /* 大小 */
 }
 
