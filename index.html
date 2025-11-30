@@ -7,6 +7,37 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    
+    <style>
+        /* 個人介紹卡片結構 (顏色與間距由 style.css 控制) */
+        .happy {
+            width: 800px;
+            /* 使用 style.css 定義的變數來控制上方間距 */
+            margin: var(--profile-card-top-spacing) auto 20px auto; 
+            border: solid 1px gray;
+            background-color: var(--card-bg-color);
+            overflow: hidden; 
+        }
+        .bdcard { width: 300px; float: left; padding: 20px; }
+        .bdcard img { display: block; width: 100%; }
+        .bdtext { 
+            float: right; 
+            width: 430px; 
+            padding: 20px 20px 0px 0px; 
+            color: var(--main-text-color); 
+        }
+        .bdtext h1 { 
+            font-size: var(--profile-name-size); /* 36px */
+            margin-top: var(--profile-name-margin-top); 
+            margin-bottom: 10px; 
+        }
+
+        /* 手機版卡片轉直式 */
+        @media (max-width: 768px) {
+            .happy { width: 100% !important; height: auto !important; }
+            .bdcard, .bdtext { width: 100% !important; float: none !important; padding: 10px !important; }
+        }
+    </style>
 </head>
 
 <body>
@@ -77,7 +108,77 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal-music" tabindex="-1" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h2 class="modal-title" style="text-align:center">上架作品</h2></div><div class="modal-body"><ol><li>『 你我一起 』<ul><li>參與歌詞</li><li>2020-02-10-上架</li></ul><img src="assets/img1/AA.你我一起.jpg" alt="你我一起" /><br></li><li>『 面具 』<ul><li>參與歌詞</li><li>2020-02-10-上架</li></ul><img src="assets/img1/AB.面具.png" alt="面具" /><br></li><li>『 妳還記得嗎？ 』<ul><li>復刻愛情首部曲</li><li>2021-08-30-上架</li></ul><img src="assets/img1/02.妳還記得嗎.jpg" alt="妳還記得嗎" /><br></li><li>『 再見了 親愛的 』<ul><li>紀念愛情上部曲</li><li>2025-05-20-上架</li></ul><img src="assets/img1/03.再見了親愛的.jpg" alt="再見了親愛的" /><br></li><li>『 疫起回家 』<ul><li>紀念愛情上部曲</li><li>2025-08-23-上架</li></ul><img src="assets/img1/04.疫起回家.png" alt="疫起回家" /><br></li><li>『 告白の搖滾詩 』<ul><li>紀念愛情上部曲</li><li>2025-08-29-上架</li></ul><img src="assets/img1/AC.告白的搖滾詩.png" alt="告白的搖滾詩" /><br></li></ol></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">關閉</button></div></div></div></div>
+    <div class="modal fade" id="modal-music" tabindex="-1" role="dialog" aria-labelledby="label-music" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="text-align:center">上架作品</h2>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>
+                            『 你我一起 』
+                            <ul>
+                                <li>參與歌詞</li>
+                                <li>2020-02-10-上架</li>
+                            </ul>
+                            <img src="assets/img1/AA.你我一起.jpg" alt="你我一起" />
+                            <br>
+                        </li>
+                        <li>
+                            『 面具 』
+                            <ul>
+                                <li>參與歌詞</li>
+                                <li>2020-02-10-上架</li>
+                            </ul>
+                            <img src="assets/img1/AB.面具.png" alt="面具" />
+                            <br>
+                        </li>
+                        <li>
+                            『 妳還記得嗎？ 』
+                            <ul>
+                                <li>復刻愛情首部曲</li>
+                                <li>2021-08-30-上架</li>
+                            </ul>
+                            <img src="assets/img1/02.妳還記得嗎.jpg" alt="妳還記得嗎" />
+                            <br>
+                        </li>
+                        <li>
+                            『 再見了 親愛的 』
+                            <ul>
+                                <li>紀念愛情上部曲</li>
+                                <li>2025-05-20-上架</li>
+                            </ul>
+                            <img src="assets/img1/03.再見了親愛的.jpg" alt="再見了親愛的" />
+                            <br>
+                        </li>
+                        <li>
+                            『 疫起回家 』
+                            <ul>
+                                <li>紀念愛情上部曲</li>
+                                <li>2025-08-23-上架</li>
+                            </ul>
+                            <img src="assets/img1/04.疫起回家.png" alt="疫起回家" />
+                            <br>
+                        </li>
+                        <li>
+                            『 告白の搖滾詩 』
+                            <ul>
+                                <li>紀念愛情上部曲</li>
+                                <li>2025-08-29-上架</li>
+                            </ul>
+                            <img src="assets/img1/AC.告白的搖滾詩.png" alt="告白的搖滾詩" />
+                            <br>
+                        </li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <hr/>
     <footer style="text-align: center;">
