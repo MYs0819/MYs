@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* -------------- 配色/字級/元件/圖片設定區（可自行調整） -------------- */
+/* ================ 配色/字級/元件/圖片設定區（可自行調整） ================*/
 :root {
     /* -------- 1. 背景顏色設定 -------- */
     /* [設定 A：指定黑色漸層] - 目前套用這個 */
@@ -13,81 +13,85 @@
     /* -------- 2. 字體與通用顏色 -------- */
     --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* 圓體字型 */
     
-    /* 主要文字顏色 (白) - 用於：大標題、卡片標題 */
+    /* 主要文字顏色 (白) */
+    /* 舉例：大標題「四週變形工時班表」、系統卡片上的標題「預排開放」 */
     --main-text-color: #FFFFFF;     
     
-    --card-bg-color: #262626;       /* 首頁個人介紹卡片的背景色 */
+    /* 視窗內文字顏色 (深色) */
+    /* 舉例：點擊察看後跳出來的視窗，裡面的黑色文字 (如：每三週預排流程...) */
+    --modal-text-color: #333333;    
+    
+    /* 首頁個人介紹卡片的背景色 */
+    /* 舉例：首頁 MeiYang 那張大卡片的底色 */
+    --card-bg-color: #262626;       
 
     /* -------- 3. 導航列設定 (最上方選單) -------- */
     /* 選單文字大小 */
-    --nav-item-size: 18px;          
+    /* 舉例：最上面的 [首頁] [各大系統] [資訊補給] 這幾個字 */
+    --nav-item-size: 16px;          
     
     /* 選單文字上下間距 */
-    --nav-padding-y: 13px;          
+    /* 舉例：決定導航列那一條黑色的要多「厚」，數字越大越厚 */
+    --nav-padding-y: 15px;          
     
     /* 選單文字左右間距 */
+    /* 舉例：決定 [首頁] 跟 [各大系統] 中間要空多寬 */
     --nav-padding-x: 20px;          
 
     /* -------- 4. 圖片尺寸控制 -------- */
     /* [內容圖片] */
-    --content-img-width-pc: 95%;    /* 電腦版圖片寬度 */
-    --content-img-width-mobile: 100%; /* 手機版圖片寬度 */
+    /* 舉例：點擊察看後，視窗裡面的截圖 (如班表截圖) */
+    --content-img-width-pc: 80%;      /* 電腦版寬度 (95%代表幾乎佔滿視窗) */
+    --content-img-width-mobile: 90%; /* 手機版寬度 */
     
     /* [頁尾 Logo] */
-    --footer-logo-width-pc: 95px;  /* 電腦版 Logo 寬度 */
+    /* 舉例：最下面版權宣告上面的那個 MYs Logo 圖片 */
+    --footer-logo-width-pc: 150px;    /* 電腦版 Logo 寬度 */
     --footer-logo-width-mobile: 100px; /* 手機版 Logo 寬度 */
 
     /* -------- 5. 標題大小 -------- */
-    /* 大標題統一大小 - 例：四週變形工時班表、異動班別審查系統、勞資知識補給站、音樂作品 */
-    --section-title-size: 40x;     
+    /* 大標題統一大小 */
+    /* 舉例：「四週變形工時班表」、「異動班別審查系統」、「勞資知識補給站」 */
+    --section-title-size: 40px;     
     
     /* 子卡片標題大小 */
+    /* 舉例：「預排開放」、「異動鍵入」、「正兼職須知」 */
     --card-title-size: 20px;        
 
     /* -------- 6. 卡片內文設定 (獨立控制) -------- */
-    /* 卡片內文顏色 */
-    --card-text-color: #f3f3f3;     
+    /* 舉例：預排開放下面的說明文字「開放連結為底下說明...」 */
+    --card-text-color: #5b0f00;     /* 內文顏色 */
+    --card-text-size: 14px;         /* 內文大小 */
     
-    /* 卡片內文大小 */
-    --card-text-size: 14px;         
-    
-    --card-text-line-height: 1.5;   /* 內文行高 */
-    --card-text-lines: 2;           /* 強制顯示行數 */
+    --card-text-line-height: 1.5;   /* 內文行高 (行與行的距離) */
+    --card-text-lines: 2;           /* 強制顯示行數 (固定兩行，多的變...) */
 
     /* -------- 7. 頁尾版權設定 (獨立控制) -------- */
-    /* 頁尾文字顏色 */
-    --footer-text-color: #bcbcbc;   
+    /* 舉例：最下面的 Email:mayday... 以及 Copyright... */
+    --footer-text-color: #f3f3f3;   /* 文字顏色 */
+    --footer-text-size: 14px;       /* 文字大小 */
     
-    /* 頁尾文字大小 */
-    --footer-text-size: 14px;       
+    /*  -------- 頁尾間距控制 -------- */
+    --footer-logo-margin-top: 30px;    /* ★ Logo 圖片跟上方內容區塊的距離 (覺得太貼就調大這個) */
+    --footer-logo-margin-bottom: 3px;  /* Logo 圖片跟下方 Email 的距離 */
+    --footer-text-margin-y: 4px;       /* Email 跟 Copyright 每行文字上下的距離 */
 
     /* -------- 8. 按鈕設定 -------- */
-    --btn-radius: 15px;              /* 按鈕圓角 */
-    --btn-font-size: 14px;          /* 按鈕文字大小 */
-    --btn-p-bg: #337ab7;            /* 主要按鈕背景 (藍) */
-    --btn-p-border: #2e6da4;        /* 主要按鈕邊框 */
+    /* 舉例：藍色的「點擊察看」、「打開詳細」按鈕 */
+    --btn-radius: 5px;              /* 圓角 (數字越大越圓) */
+    --btn-font-size: 14px;          /* 按鈕裡的文字大小 */
+    --btn-p-bg: #337ab7;            /* 按鈕背景顏色 (藍) */
+    --btn-p-border: #2e6da4;        /* 按鈕邊框顏色 (深藍) */
 
     /* -------- 9. 首頁個人卡片位置設定 -------- */
-    --profile-card-top-spacing: 20px;  /* 卡片距頂距離 */
-    --profile-name-margin-top: 0px;    /* 名字距頂距離 */
-
-    /* -------- 10. 彈跳視窗 (Modal/點擊察看) 設定 (★新增此區) -------- */
-    /* 視窗背景顏色 */
-    --modal-bg-color: #fff2cc;      
+    --profile-card-top-spacing: 20px; 
+    --profile-name-margin-top: 0px; 
     
-    /* 視窗圓角 (數字越大越圓) */
-    --modal-radius: 20px;           
-    
-    /* 視窗標題 (最上面的標題) */
-    --modal-title-color: #333333;   /* 顏色 */
-    --modal-title-size: 22px;       /* 大小 */
-    
-    /* 視窗內文 (中間的內容) */
-    --modal-text-color: #bcbcbc;    /* 顏色 */
-    --modal-text-size: 16px;        /* 大小 */
+    /* -------- 10. 彈跳視窗顏色 -------- */
+    --modal-bg-color: #FFFFFF;
 }
 
-/* -------------- 設定區結束，下方為樣式邏輯 -------------- */
+/* ================ 設定區結束，下方為樣式邏輯 (建議勿動) ================ */
 
 /* 基本設定 */
 body {
@@ -95,8 +99,8 @@ body {
     background-attachment: fixed;
     color: var(--main-text-color);
     font-family: var(--main-font);
-    overflow-x: hidden;             
-    padding-top: 50px;              
+    overflow-x: hidden;             /* 強制禁止左右滑動 */
+    padding-top: 50px;
 }
 
 /* RWD 容器設定 */
@@ -109,19 +113,10 @@ body {
 
 /* 手機版專用設定 */
 @media (max-width: 768px) {
-    .container.body-content {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-    .indexSystemInfo {
-        padding: 20px !important;
-    }
+    .container.body-content { padding-left: 10px !important; padding-right: 10px !important; }
+    .indexSystemInfo { padding: 20px !important; }
     .col-xs-6 h2 { font-size: 18px !important; }
-    
-    /* 手機版 Logo */
     .footer-logo { width: var(--footer-logo-width-mobile) !important; }
-    
-    /* 手機版內容圖片 */
     .modal-body img, .text-center img { width: var(--content-img-width-mobile) !important; }
 }
 
@@ -132,7 +127,7 @@ body {
     display: inline-block;
 }
 
-/* 導航列 (強制橫排) */
+/* 導航列 */
 .navbar-inverse { background-color: rgba(0,0,0,0.9); border: none; min-height: 50px; }
 .navbar-header { display: none !important; }
 .navbar-collapse.collapse {
@@ -142,11 +137,7 @@ body {
     overflow: visible !important;
     text-align: center;
 }
-.navbar-nav {
-    float: none !important;
-    display: inline-block !important;
-    margin: 0 auto;
-}
+.navbar-nav { float: none !important; display: inline-block !important; margin: 0 auto; }
 .navbar-nav > li { float: left; }
 .navbar-nav > li > a {
     font-size: var(--nav-item-size);
@@ -160,7 +151,7 @@ body {
     text-decoration: underline;
 }
 
-/* 首頁個人卡片 */
+/* 首頁卡片 */
 .happy {
     width: 800px;
     margin: var(--profile-card-top-spacing) auto 20px auto; 
@@ -170,12 +161,7 @@ body {
 }
 .bdcard { width: 300px; float: left; padding: 20px; }
 .bdcard img { display: block; width: 100%; }
-.bdtext {
-    float: right; 
-    width: 430px;
-    padding: 20px 20px 0px 0px;
-    color: var(--main-text-color);
-}
+.bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--main-text-color); }
 .bdtext h1 {
     font-size: 36px;
     margin-top: var(--profile-name-margin-top);
@@ -186,7 +172,7 @@ body {
     .bdcard, .bdtext { width: 100% !important; float: none !important; padding: 10px !important; }
 }
 
-/* 內容區塊 (背板) */
+/* 內容區塊背板 */
 .indexSystemInfo {
     padding: 50px;
     margin-bottom: 30px;
@@ -198,12 +184,13 @@ body {
 }
 .col-md-3, .col-xs-6 { margin-bottom: 30px; }
 
-/* 標題設定 (強制置中) */
+/* 標題設定 */
 h1.main-title {
     text-align: center !important; 
     font-size: var(--section-title-size) !important;
     margin-bottom: 20px;
     color: var(--main-text-color);
+    font-weight: bold;
 }
 h2.sub-title {
     text-align: center !important; 
@@ -211,26 +198,27 @@ h2.sub-title {
     margin-bottom: 40px;
     color: var(--main-text-color);
 }
+/* 系統頁內小標題 */
+.row h2 {
+    font-size: var(--card-title-size) !important;
+    color: #f3f3f3;
+}
 
-/* 卡片內文說明 (強制兩行) */
+/* 內文省略 */
 .desc-text {
     color: var(--card-text-color); 
     font-size: var(--card-text-size); 
     line-height: var(--card-text-line-height);
-    
     display: -webkit-box;
     -webkit-line-clamp: var(--card-text-lines);
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    
     height: calc(var(--card-text-size) * var(--card-text-line-height) * var(--card-text-lines));
-    max-height: calc(var(--card-text-size) * var(--card-text-line-height) * var(--card-text-lines));
-    
     margin-bottom: 15px;
 }
 
-/* 按鈕樣式 */
+/* 按鈕 */
 .btn-primary {
     background-color: var(--btn-p-bg);
     border-color: var(--btn-p-border);
@@ -238,26 +226,11 @@ h2.sub-title {
     font-size: var(--btn-font-size);
 }
 
-/* ★ Modal (彈跳視窗) 設定區 (套用上方變數) */
+/* Modal */
 .modal-content {
     background-color: var(--modal-bg-color); 
     color: var(--modal-text-color); 
-    border-radius: var(--modal-radius); /* 套用圓角變數 */
     text-align: left; 
-    border: none; /* 移除預設邊框，讓圓角更明顯 */
-}
-
-/* 視窗標題 */
-.modal-header .modal-title, .modal-header h4 {
-    font-size: var(--modal-title-size);
-    color: var(--modal-title-color);
-    font-weight: bold;
-}
-
-/* 視窗內文 */
-.modal-body {
-    font-size: var(--modal-text-size);
-    color: var(--modal-text-color);
 }
 
 /* Icon 置中 */
@@ -268,12 +241,13 @@ h2.sub-title {
 .footer-logo {
     width: var(--footer-logo-width-pc);
     height: auto;
-    margin-bottom: 15px;
+    margin-top: var(--footer-logo-margin-top);       /* 新增：套用上方間距 */
+    margin-bottom: var(--footer-logo-margin-bottom); /* 套用下方間距 */
     display: inline-block;
 }
 footer p {
     color: var(--footer-text-color) !important; 
     font-size: var(--footer-text-size) !important; 
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin-top: var(--footer-text-margin-y);    
+    margin-bottom: var(--footer-text-margin-y); 
 }
