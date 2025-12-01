@@ -21,7 +21,6 @@
     /* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
     /* [MeiYang 卡片] */
     --card-bg-color: #262626;        /* 卡片底色 */
-    
     --home-name-size: 30px;          /* MeiYang 名字大小 */
     --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */    
     --home-desc-color: #efefef;      /* 下方介紹內文顏色 */
@@ -50,7 +49,7 @@
     /* ==================== 4. 頁尾版權 (Footer) 獨立設定 ==================== */
     /* [文字] (Email, Copyright) */
     --footer-text-size: 14px;        /* 文字大小 */
-    --footer-text-color: #999999;    /* 文字顏色 */
+    --footer-text-color: #666666;    /* 文字顏色 */
     
     /* [圖片] (MYs Logo) */
     --footer-logo-width-pc: 95px;    /* 電腦版寬度 */
