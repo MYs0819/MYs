@@ -177,15 +177,45 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <div id="imgLightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+    </div>
+
     <script>
         $(document).ready(function(){
-            // 當彈跳視窗 (Modal) 準備顯示時觸發
+            // [原有功能] System/About 頁面自動抓取文字
             $('.modal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget); // 1. 抓取是哪一顆按鈕觸發的
-                var content = button.parent().find('.desc-text').html(); // 2. 抓取按鈕同一層外面的 .desc-text 文字內容
-                
-                // 3. 將抓到的文字，填入現在這個視窗內的 .modal-desc-full 區塊
-                $(this).find('.modal-desc-full').html(content);
+                var button = $(event.relatedTarget);
+                // 只有當按鈕存在且外面有 desc-text 時才執行 (避免在 index.html 報錯)
+                if (button.length && button.parent().find('.desc-text').length) {
+                    var content = button.parent().find('.desc-text').html();
+                    $(this).find('.modal-desc-full').html(content);
+                }
+            });
+
+            // [新增功能] 點擊圖片放大 (燈箱效果)
+            // 排除 footer logo 和 social icons
+            $('img').not('.footer-logo').not('.social-icons img').on('click', function(){
+                // 如果圖片外面有包 <a> (是連結)，就不執行放大，讓它正常跳轉
+                if($(this).parent('a').length > 0) {
+                    return;
+                }
+
+                var src = $(this).attr('src'); // 抓取圖片路徑
+                $('#lightboxImage').attr('src', src); // 設定給燈箱
+                $('#imgLightbox').fadeIn(); // 顯示燈箱
+            });
+
+            // 關閉燈箱 (點擊 X 或 背景)
+            $('.lightbox-close, .lightbox-overlay').on('click', function(e){
+                // 點擊圖片本身不關閉，點背景才關閉
+                if(e.target.id !== 'lightboxImage') {
+                     $('#imgLightbox').fadeOut();
+                }
             });
         });
     </script>
