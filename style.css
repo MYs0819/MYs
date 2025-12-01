@@ -10,7 +10,6 @@
     /* 圓體字型 */
     --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; 
 
-
     /* ==================== 1. 導航列設定 (Navbar) ==================== */
     /* [首頁] [各大系統] [資訊補給] */
     --nav-item-size: 18px;          /* 文字大小 */
@@ -19,23 +18,22 @@
     --nav-padding-y: 15px;          /* 上下厚度 */
     --nav-padding-x: 20px;          /* 左右間距 */
 
-
     /* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
     /* [MeiYang 卡片] */
     --card-bg-color: #262626;        /* 卡片底色 */
-    --home-name-size: 30px;          /* MeiYang 名字大小 */
+    --home-name-size: 36px;          /* MeiYang 名字大小 */
     --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */
+    --home-desc-color: #d9d9d9;      /* 下方介紹內文顏色 (詞曲創作...那幾行) */
     --home-card-top-spacing: 20px;   /* 卡片距離頂部的高度 */
     --home-name-margin-top: 0px;     /* 名字距離圖片的高度 */
 
     /* [區塊標題] (音樂作品、業務承接事項) */
-    --home-section-title-size: 30px; /* 標題大小 */
+    --home-section-title-size: 25px;     /* 標題大小 */
     --home-section-title-color: #FFFFFF; /* 標題顏色 */
-
 
     /* ==================== 3. 各大系統 & 資訊補給 (system/about) 獨立設定 ==================== */
     /* [大標題 H1] (四週變形工時、勞資知識補給站) */
-    --sys-h1-size: 30px;             /* ★ H1 大小 */
+    --sys-h1-size: 35px;             /* ★ H1 大小 */
     --sys-h1-color: #FFFFFF;         /* ★ H1 顏色 */
 
     /* [小標題] (預排開放、正兼職須知) */
@@ -44,22 +42,23 @@
 
     /* [內文說明] (開放連結為...) */
     --sys-text-size: 14px;           /* 內文大小 */
-    --sys-text-color: #d9d9d9;       /* 內文顏色 */
+    --sys-text-color: #f3f3f3;       /* 內文顏色 */
     --sys-text-line-height: 1.5;     /* 行高 */
     --sys-text-lines: 2;             /* 強制行數 (超過變...) */
 
+
     /* ==================== 4. 頁尾版權 (Footer) 獨立設定 ==================== */
     /* [文字] (Email, Copyright) */
-    --footer-text-size: 14px;        /* 文字大小 */
-    --footer-text-color: #b7b7b7;    /* 文字顏色 */
+    --footer-text-size: 14px;          /* 文字大小 */
+    --footer-text-color: #d9d9d9;      /* 文字顏色 */
     
     /* [圖片] (MYs Logo) */
-    --footer-logo-width-pc: 95px;    /* 電腦版寬度 */
+    --footer-logo-width-pc: 95px;      /* 電腦版寬度 */
     --footer-logo-width-mobile: 100px; /* 手機版寬度 */
 
     /* [間距控制] */
-    --footer-logo-margin-top: 2px;     /* ★ Logo 距離上方橫線的距離 (覺得太遠調小，太近調大) */
-    --footer-logo-margin-bottom: 2px;  /* Logo 距離下方 Email 的距離 */
+    --footer-logo-margin-top: 1px;     /* Logo 距離上方橫線的距離 (覺得太遠調小，太近調大) */
+    --footer-logo-margin-bottom: 0.5px;  /* Logo 距離下方 Email 的距離 */
     --footer-text-margin-y: 4px;       /* Email 與 Copyright 的間距 */
 
 
@@ -147,9 +146,17 @@ body {
 }
 .bdcard { width: 300px; float: left; padding: 20px; }
 .bdcard img { display: block; width: 100%; }
-.bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--home-name-color); }
+.bdtext { 
+    float: right; 
+    width: 430px; 
+    padding: 20px 20px 0px 0px; 
+    /* ★ 改這裡：內文使用專屬顏色變數 */
+    color: var(--home-desc-color); 
+}
 .bdtext h1 {
     font-size: var(--home-name-size);
+    /* ★ 改這裡：名字使用專屬顏色變數 */
+    color: var(--home-name-color);
     margin-top: var(--home-name-margin-top);
     margin-bottom: 10px;
 }
@@ -242,13 +249,13 @@ h2.sub-title {
 hr {
     margin-top: 10px;
     margin-bottom: 0;
-    border-top: 1px solid #555; /* 讓橫線稍微明顯一點 */
+    border-top: 1px solid #555; 
 }
 .footer-logo {
     width: var(--footer-logo-width-pc);
     height: auto;
-    margin-top: var(--footer-logo-margin-top);       /* ★ 控制與橫線距離 */
-    margin-bottom: var(--footer-logo-margin-bottom); /* ★ 控制與下方文字距離 */
+    margin-top: var(--footer-logo-margin-top);       
+    margin-bottom: var(--footer-logo-margin-bottom); 
     display: inline-block;
 }
 footer p {
