@@ -44,7 +44,7 @@
 
     /* [內文說明] (開放連結為...) */
     --sys-text-size: 14px;           /* 內文大小 */
-    --sys-text-color: #f3f3f3;       /* 內文顏色 */
+    --sys-text-color: #d9d9d9;       /* 內文顏色 */
     --sys-text-line-height: 1.5;     /* 行高 */
     --sys-text-lines: 2;             /* 強制行數 (超過變...) */
 
@@ -59,8 +59,8 @@
     --footer-logo-width-mobile: 100px; /* 手機版寬度 */
 
     /* [間距控制] */
-    --footer-logo-margin-top: 5px;     /* ★ Logo 距離上方橫線的距離 (覺得太遠調小，太近調大) */
-    --footer-logo-margin-bottom: 5px;  /* Logo 距離下方 Email 的距離 */
+    --footer-logo-margin-top: 2px;     /* ★ Logo 距離上方橫線的距離 (覺得太遠調小，太近調大) */
+    --footer-logo-margin-bottom: 2px;  /* Logo 距離下方 Email 的距離 */
     --footer-text-margin-y: 4px;       /* Email 與 Copyright 的間距 */
 
 
