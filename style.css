@@ -69,12 +69,12 @@
     --btn-p-border: #2e6da4;         /* 邊框深藍 */
 
     /* [彈跳視窗 (Modal)] */
-    --modal-bg-color: #e6b8af;       /* 視窗背景色 (預設白) */
+    --modal-bg-color: #e6b8af;       /* 視窗背景色 */
     --modal-text-color: #333333;     /* 視窗內文字色 (深色) */
     
     /* [內容圖片] (視窗內的截圖) */
-    --content-img-width-pc: 80%;     /* 電腦版寬度 */
-    --content-img-width-mobile: 90%; /* 手機版寬度 */
+    --content-img-width-pc: 100%;     /* 電腦版寬度 */
+    --content-img-width-mobile: 95%; /* 手機版寬度 */
 }
 
 /* ================ 設定區結束，下方為樣式邏輯 ================ */
@@ -239,7 +239,11 @@ h2.sub-title {
 }
 
 /* Icon 置中 */
-.social-icons { text-align: center; margin-top: 20px; }
+.social-icons {
+    text-align: center;
+    margin-top: 20px;
+    white-space: nowrap; /* ★★★ 加入這一行，強制不換行 ★★★ */
+}
 .social-icons a { display: inline-block; margin: 0 5px; }
 
 /* 頁尾 */
