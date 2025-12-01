@@ -48,7 +48,6 @@
     --sys-text-line-height: 1.5;     /* 行高 */
     --sys-text-lines: 2;             /* 強制行數 (超過變...) */
 
-
     /* ==================== 4. 頁尾版權 (Footer) 獨立設定 ==================== */
     /* [文字] (Email, Copyright) */
     --footer-text-size: 14px;        /* 文字大小 */
