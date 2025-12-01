@@ -22,20 +22,20 @@
     /* [MeiYang 卡片] */
     --card-bg-color: #262626;        /* 卡片底色 */
     
-    --home-name-size: 36px;          /* MeiYang 名字大小 */
+    --home-name-size: 30px;          /* MeiYang 名字大小 */
     --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */    
-    --home-desc-color: #bcbcbc;      /* 下方介紹內文顏色 */
+    --home-desc-color: #efefef;      /* 下方介紹內文顏色 */
     --home-card-top-spacing: 20px;   /* 卡片距離頂部的高度 */
     --home-name-margin-top: 0px;     /* 名字距離圖片的高度 */
 
     /* [區塊標題] (音樂作品、業務承接事項) */
-    --home-section-title-size: 25px; /* 標題大小 */
+    --home-section-title-size: 30px; /* 標題大小 */
     --home-section-title-color: #FFFFFF; /* 標題顏色 */
 
     /* ==================== 3. 各大系統 & 資訊補給 (system/about) 獨立設定 ==================== */
     /* [大標題 H1] (四週變形工時、勞資知識補給站) */
-    --sys-h1-size: 40px;             /* ★ H1 大小 */
-    --sys-h1-color: #FFFFFF;         /* ★ H1 顏色 */
+    --sys-h1-size: 30px;             /* H1 大小 */
+    --sys-h1-color: #FFFFFF;         /* H1 顏色 */
 
     /* [小標題] (預排開放、正兼職須知) */
     --sys-card-title-size: 20px;     /* 小標題大小 */
@@ -43,23 +43,22 @@
 
     /* [內文說明] (開放連結為...) */
     --sys-text-size: 14px;           /* 內文大小 */
-    --sys-text-color: #f3f3f3;       /* 內文顏色 */
+    --sys-text-color: #efefef;       /* 內文顏色 */
     --sys-text-line-height: 1.5;     /* 行高 */
     --sys-text-lines: 2;             /* 強制行數 (超過變...) */
-
 
     /* ==================== 4. 頁尾版權 (Footer) 獨立設定 ==================== */
     /* [文字] (Email, Copyright) */
     --footer-text-size: 14px;        /* 文字大小 */
-    --footer-text-color: #d9d9d9;    /* 文字顏色 */
+    --footer-text-color: #999999;    /* 文字顏色 */
     
     /* [圖片] (MYs Logo) */
     --footer-logo-width-pc: 95px;    /* 電腦版寬度 */
     --footer-logo-width-mobile: 100px; /* 手機版寬度 */
 
     /* [間距控制] */
-    --footer-logo-margin-top: 5px;     /* ★ Logo 距離上方橫線的距離 */
-    --footer-logo-margin-bottom: 1px;  /* Logo 距離下方 Email 的距離 */
+    --footer-logo-margin-top: 1px;     /* Logo 距離上方橫線的距離 */
+    --footer-logo-margin-bottom: 0px;  /* Logo 距離下方 Email 的距離 */
     --footer-text-margin-y: 4px;       /* Email 與 Copyright 的間距 */
 
 
