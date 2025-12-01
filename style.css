@@ -3,77 +3,121 @@
 /* ================ 配色/字級/元件/圖片設定區（可自行調整） ================*/
 :root {
     /* ==================== 0. 全站通用背景與字體 ==================== */
+    /* [背景設定] */
+    /* 舉例：整個網頁的底色漸層 */
     --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
     --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);
     --bg-style-3: #262626;
 
-    /* 圓體字型 */
+    /* [通用字體] */
     --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; 
 
+
     /* ==================== 1. 導航列設定 (Navbar) ==================== */
-    /* [首頁] [各大系統] [資訊補給] */
-    --nav-item-size: 18px;          /* 文字大小 */
-    --nav-text-color: #ddd;         /* 平常顏色 */
-    --nav-active-color: #FFFFFF;    /* 選中顏色 */
-    --nav-padding-y: 15px;          /* 上下厚度 */
-    --nav-padding-x: 20px;          /* 左右間距 */
+    /* 控制項目：最上面的 [首頁] [各大系統] [資訊補給] */
+    
+    /* 選單文字大小 */
+    --nav-item-size: 18px;          
+    
+    /* 選單文字顏色 (平常沒選中的時候) */
+    --nav-text-color: #ddd;         
+    
+    /* 選單文字顏色 (滑鼠移過去或選中時，例：白色) */
+    --nav-active-color: #FFFFFF;    
+    
+    /* 選單文字上下間距 (數字越大，整條黑色導航列越厚) */
+    --nav-padding-y: 15px;          
+    
+    /* 選單文字左右間距 (數字越大，選項之間分越開) */
+    --nav-padding-x: 20px;          
+
 
     /* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
-    /* [MeiYang 卡片] */
-    --card-bg-color: #262626;        /* 卡片底色 */
-    --home-name-size: 30px;          /* MeiYang 名字大小 */
-    --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */
-    --home-desc-color: #d9d9d9;      /* 下方介紹內文顏色 (詞曲創作...那幾行) */
-    --home-card-top-spacing: 20px;   /* 卡片距離頂部的高度 */
-    --home-name-margin-top: 0px;     /* 名字距離圖片的高度 */
+    /* [MeiYang 卡片設定] */
+    /* 卡片底色 */
+    --card-bg-color: #262626;        
+    
+    /* MeiYang 名字大小 */
+    --home-name-size: 36px;          
+    
+    /* MeiYang 名字顏色 */
+    --home-name-color: #FFFFFF;      
+    
+    /* 下方介紹內文顏色 (例：詞曲創作...那幾行) */
+    --home-desc-color: #bcbcbc;      
+    
+    /* 卡片距離頂部的高度 (覺得太貼可以調大) */
+    --home-card-top-spacing: 20px;   
+    
+    /* 名字距離圖片的高度 */
+    --home-name-margin-top: 0px;     
 
-    /* [區塊標題] (音樂作品、業務承接事項) */
-    --home-section-title-size: 30px;     /* 標題大小 */
-    --home-section-title-color: #FFFFFF; /* 標題顏色 */
+    /* [區塊標題] */
+    /* 舉例：首頁的「音樂作品」、「業務承接事項」標題大小 */
+    --home-section-title-size: 25px; 
+    
+    /* 舉例：首頁的「音樂作品」、「業務承接事項」標題顏色 */
+    --home-section-title-color: #FFFFFF; 
+
 
     /* ==================== 3. 各大系統 & 資訊補給 (system/about) 獨立設定 ==================== */
-    /* [大標題 H1] (四週變形工時、勞資知識補給站) */
-    --sys-h1-size: 30px;             /* ★ H1 大小 */
-    --sys-h1-color: #FFFFFF;         /* ★ H1 顏色 */
+    /* [大標題 H1] */
+    /* 舉例：「四週變形工時班表」、「勞資知識補給站」、「異動班別審查系統」 */
+    --sys-h1-size: 40px;             /* 大小 */
+    --sys-h1-color: #FFFFFF;         /* 顏色 */
 
-    /* [小標題] (預排開放、正兼職須知) */
-    --sys-card-title-size: 20px;     /* 小標題大小 */
-    --sys-card-title-color: #d9d9d9; /* 小標題顏色 */
+    /* [小標題] */
+    /* 舉例：卡片上的標題，如「預排開放」、「異動鍵入」、「正兼職須知」 */
+    --sys-card-title-size: 20px;     /* 大小 */
+    --sys-card-title-color: #f3f3f3; /* 顏色 */
 
-    /* [內文說明] (開放連結為...) */
-    --sys-text-size: 14px;           /* 內文大小 */
-    --sys-text-color: #e6b8af;       /* 內文顏色 */
-    --sys-text-line-height: 1.5;     /* 行高 */
-    --sys-text-lines: 2;             /* 強制行數 (超過變...) */
+    /* [內文說明] */
+    /* 舉例：預排開放下面的說明文字「開放連結為底下說明...」 */
+    --sys-text-size: 14px;           /* 大小 */
+    --sys-text-color: #f3f3f3;       /* 顏色 */
+    --sys-text-line-height: 1.5;     /* 行高 (行與行的距離) */
+    --sys-text-lines: 2;             /* 強制行數 (固定兩行，多的變...) */
 
 
     /* ==================== 4. 頁尾版權 (Footer) 獨立設定 ==================== */
-    /* [文字] (Email, Copyright) */
-    --footer-text-size: 14px;          /* 文字大小 */
-    --footer-text-color: #b7b7b7;      /* 文字顏色 */
+    /* [文字設定] */
+    /* 舉例：最下面的 Email:mayday... 以及 Copyright... */
+    --footer-text-size: 14px;        /* 大小 */
+    --footer-text-color: #d9d9d9;    /* 顏色 */
     
-    /* [圖片] (MYs Logo) */
-    --footer-logo-width-pc: 95px;      /* 電腦版寬度 */
+    /* [圖片設定] */
+    /* 舉例：最下面版權宣告上面的那個 MYs Logo 圖片 */
+    --footer-logo-width-pc: 95px;    /* 電腦版寬度 */
     --footer-logo-width-mobile: 100px; /* 手機版寬度 */
 
     /* [間距控制] */
-    --footer-logo-margin-top: 1px;     /* Logo 距離上方橫線的距離 (覺得太遠調小，太近調大) */
-    --footer-logo-margin-bottom: 0px;  /* Logo 距離下方 Email 的距離 */
-    --footer-text-margin-y: 4px;       /* Email 與 Copyright 的間距 */
+    /* Logo 圖片跟上方橫線的距離 (覺得太貼就調大這個) */
+    --footer-logo-margin-top: 5px;     
+    
+    /* Logo 圖片跟下方 Email 的距離 */
+    --footer-logo-margin-bottom: 1px;  
+    
+    /* Email 跟 Copyright 每行文字上下的距離 */
+    --footer-text-margin-y: 4px;       
 
 
     /* ==================== 5. 其他元件設定 ==================== */
     /* [按鈕] */
+    /* 舉例：藍色的「點擊察看」、「打開詳細」按鈕 */
     --btn-radius: 5px;               /* 圓角 */
-    --btn-font-size: 14px;           /* 大小 */
-    --btn-p-bg: #337ab7;             /* 背景藍 */
-    --btn-p-border: #2e6da4;         /* 邊框深藍 */
+    --btn-font-size: 14px;           /* 文字大小 */
+    --btn-p-bg: #337ab7;             /* 背景顏色 (藍) */
+    --btn-p-border: #2e6da4;         /* 邊框顏色 (深藍) */
 
     /* [彈跳視窗 (Modal)] */
-    --modal-bg-color: #FFFFFF;       /* 視窗背景色 (預設白) */
-    --modal-text-color: #333333;     /* 視窗內文字色 (深色) */
+    /* 舉例：點擊按鈕後跳出來的視窗背景顏色 */
+    --modal-bg-color: #FFFFFF;       
     
-    /* [內容圖片] (視窗內的截圖) */
+    /* 舉例：視窗裡面的文字顏色 (因為背景是白，建議文字深色) */
+    --modal-text-color: #333333;     
+    
+    /* [內容圖片] */
+    /* 舉例：視窗裡面的截圖 (如班表截圖、專輯封面) */
     --content-img-width-pc: 80%;     /* 電腦版寬度 */
     --content-img-width-mobile: 90%; /* 手機版寬度 */
 }
@@ -150,13 +194,11 @@ body {
     float: right; 
     width: 430px; 
     padding: 20px 20px 0px 0px; 
-    /* ★ 改這裡：內文使用專屬顏色變數 */
-    color: var(--home-desc-color); 
+    color: var(--home-desc-color); /* 套用首頁內文顏色 */
 }
 .bdtext h1 {
     font-size: var(--home-name-size);
-    /* ★ 改這裡：名字使用專屬顏色變數 */
-    color: var(--home-name-color);
+    color: var(--home-name-color); /* 套用首頁名字顏色 */
     margin-top: var(--home-name-margin-top);
     margin-bottom: 10px;
 }
@@ -226,19 +268,35 @@ h2.sub-title {
     font-size: var(--btn-font-size);
 }
 
-/* Modal */
+/* Modal (彈跳視窗) */
 .modal-content {
     background-color: var(--modal-bg-color); 
     color: var(--modal-text-color); 
-    text-align: left; 
+    text-align: left; /* 內容靠左 */
 }
-/* 點擊後看到的完整說明文字區塊 */
+/* 視窗標題置中 */
+.modal-header .modal-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center; 
+}
+/* 頂部說明文字置中 */
 .modal-desc-full {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px dashed #ccc;
     font-size: var(--sys-text-size);
     line-height: 1.6;
+    text-align: center; /* 強制置中 */
+}
+/* 清單文字置中 (去除黑點) */
+.modal-body ul, .modal-body ol {
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+}
+.modal-body li {
+    margin-bottom: 10px;
 }
 
 /* Icon 置中 */
