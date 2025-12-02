@@ -34,7 +34,7 @@
                 <p class="desc-text">
                     勞動基準法<br>
                     第30條﹑第30-1條<br>
-                    <br><br><br><br><br>
+                    <br>
                     2025-05-20<br>
                 </p>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-01">點擊察看</button>
@@ -44,7 +44,7 @@
                 <p class="desc-text">
                     勞動基準法<br>
                     第30條﹑第30-1條<br>
-                    <br><br><br><br><br>
+                    <br>
                     2025-05-20<br>
                 </p>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-02">點擊察看</button>
@@ -55,7 +55,7 @@
                     勞動基準法<br>
                     第30條﹑第35條﹑第36條<br>
                     第32條第一項<br>
-                    <br><br><br><br>
+                    <br>
                     2025-05-26<br>
                 </p>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-03">點擊察看</button>
@@ -383,7 +383,7 @@
             <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
         </div>
         <p style="color: var(--sub-text-color)">Email:yang750819@gmail.com</p>
-        <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MYs-b1.0.96-10/20~12/02</p>
+        <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MYs System-b1.0.97</p>
     </footer>
 
     </div>
@@ -400,7 +400,7 @@
 
     <script>
         $(document).ready(function(){
-            // [原有功能] System/About 頁面自動抓取文字
+            // System/About 頁面自動抓取文字
             $('.modal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
                 // 只有當按鈕存在且外面有 desc-text 時才執行 (避免在 index.html 報錯)
@@ -410,7 +410,7 @@
                 }
             });
 
-            // [新增功能] 點擊圖片放大 (燈箱效果)
+            // 點擊圖片放大 (燈箱效果)
             // 排除 footer logo 和 social icons
             $('img').not('.footer-logo').not('.social-icons img').on('click', function(){
                 // 如果圖片外面有包 <a> (是連結)，就不執行放大，讓它正常跳轉
