@@ -6,7 +6,7 @@
     <title>MeiYang's P.W.</title>
 
     <meta property="og:title" content="MeiYang's P.W." />
-    <meta property="og:description" content="各系統查看及勞資知識補給。" />
+    <meta property="og:description" content="MeiYang個人網站、各系統查看及勞資知識補給" />
     <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背.png" />
 
     <meta property="og:type" content="website" />
@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     
     <style>
+        /* 雖然大部分樣式都在 style.css，但這裡保留了部分特定樣式 */
         .happy {
             width: 800px;
             margin: var(--home-card-top-spacing) auto 20px auto; 
@@ -27,6 +28,18 @@
         .bdcard img { display: block; width: 100%; }
         .bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--home-desc-color); }
         .bdtext h1 { font-size: var(--home-name-size); color: var(--home-name-color); margin-top: var(--home-name-margin-top); margin-bottom: 10px; }
+
+        /* 首頁文字獨立設定 (配合 style.css 中的變數) */
+        .bdtext .intro-text {
+            font-size: var(--intro-text-size);
+            color: var(--intro-text-color);
+            margin-bottom: 5px;
+        }
+        .bdtext .exp-text {
+            font-size: var(--exp-text-size);
+            color: var(--exp-text-color);
+            margin-bottom: 3px;
+        }
 
         @media (max-width: 768px) {
             .happy { width: 100% !important; height: auto !important; }
@@ -56,12 +69,13 @@
         </div>
         <div class="bdtext">
             <h1>MeiYang</h1>
-            <p>⦿詞曲創作者  ⦿不專業錄音師  ⦿菜逼八吉他手</p>
-            <p>⦿餐飲業打滾  ⦿外場管事主管  ⦿人資承辦負責</p>
-            <p>經歷﹕詞曲創作 - 2005 ~ 至今</p>
-            <p>　　　餐飲人生 - 2005 ~ 至今</p>
-            <p>　　　非專錄音 - 2018 ~ 至今</p>
-            <p>　　　人資承辦 - 2024 ~ 至今 (三品牌)</p>
+            <p class="intro-text">⦿ 詞曲創作者 ⦿ 不專業錄音師 ⦿ 菜逼八吉他手</p>
+            <p class="intro-text">⦿ 餐飲業打滾 ⦿ 外場管事主管 ⦿ 人資承辦負責</p>
+            
+            <p class="exp-text">經歷﹕詞曲創作 - 2005 ~ 至今</p>
+            <p class="exp-text">　　　餐飲人生 - 2005 ~ 至今</p>
+            <p class="exp-text">　　　非專錄音 - 2018 ~ 至今</p>
+            <p class="exp-text">　　　人資承辦 - 2024 ~ 至今 (三品牌)</p>
         </div>
     </div>
 
@@ -94,7 +108,7 @@
             <br>
         </div>
 
-<div class="col-md-8">
+        <div class="col-md-8">
             <div style="text-align:center">
                 <h2 class="home-section-title">業務承接事項</h2>
             </div>
@@ -174,7 +188,8 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="modal-music" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -263,12 +278,12 @@
             <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
         </div>
         <p style="color: var(--sub-text-color)">Email:yang750819@gmail.com</p>
-        <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MeiYang System Version:b1.0.98</p>
+        <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MeiYang System Version:b1.1.99</p>
     </footer>
 
     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <div id="imgLightbox" class="lightbox-overlay">
@@ -278,32 +293,31 @@
 
     <script>
         $(document).ready(function(){
-            // [原有功能] System/About 頁面自動抓取文字
+            // System/About 頁面自動抓取文字
             $('.modal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
-                // 只有當按鈕存在且外面有 desc-text 時才執行 (避免在 index.html 報錯)
+                // 只有當按鈕存在且外面有 desc-text 時才執行
                 if (button.length && button.parent().find('.desc-text').length) {
                     var content = button.parent().find('.desc-text').html();
                     $(this).find('.modal-desc-full').html(content);
                 }
             });
 
-            // [新增功能] 點擊圖片放大 (燈箱效果)
+            // 點擊圖片放大 (燈箱效果)
             // 排除 footer logo 和 social icons
             $('img').not('.footer-logo').not('.social-icons img').on('click', function(){
-                // 如果圖片外面有包 <a> (是連結)，就不執行放大，讓它正常跳轉
+                // 如果圖片外面有包 <a> (是連結)，就不執行放大
                 if($(this).parent('a').length > 0) {
                     return;
                 }
 
-                var src = $(this).attr('src'); // 抓取圖片路徑
-                $('#lightboxImage').attr('src', src); // 設定給燈箱
-                $('#imgLightbox').fadeIn(); // 顯示燈箱
+                var src = $(this).attr('src');
+                $('#lightboxImage').attr('src', src);
+                $('#imgLightbox').fadeIn();
             });
 
-            // 關閉燈箱 (點擊 X 或 背景)
+            // 關閉燈箱
             $('.lightbox-close, .lightbox-overlay').on('click', function(e){
-                // 點擊圖片本身不關閉，點背景才關閉
                 if(e.target.id !== 'lightboxImage') {
                      $('#imgLightbox').fadeOut();
                 }
