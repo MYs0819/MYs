@@ -18,15 +18,24 @@
     --nav-padding-y: 15px;          /* 上下厚度 */
     --nav-padding-x: 20px;          /* 左右間距 */
 
-    /* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
+/* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
     /* [MeiYang 卡片] */
     --card-bg-color: #262626;        /* 卡片底色 */
     
     --home-name-size: 30px;          /* MeiYang 名字大小 */
     --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */     
-    --home-desc-color: #efefef;      /* 下方介紹內文顏色 */
+    --home-desc-color: #efefef;      /* 預設內文顏色 (如果沒特別設定就用這個) */
     --home-card-top-spacing: 20px;   /* 卡片距離頂部的高度 */
     --home-name-margin-top: 0px;     /* 名字距離圖片的高度 */
+
+    /* [個人介紹與經歷] (可獨立調整) */
+    /* 上半部：詞曲創作者...人資承辦負責 */
+    --intro-text-size: 16px;         /* 文字大小 */
+    --intro-text-color: #cccccc;     /* 文字顏色 */
+    
+    /* 下半部：經歷... */
+    --exp-text-size: 16px;           /* 文字大小 (可設小一點) */
+    --exp-text-color: #cccccc;       /* 文字顏色 (可設淡一點) */
 
     /* [區塊標題] (音樂作品、業務承接事項) */
     --home-section-title-size: 30px; /* 標題大小 */
@@ -168,6 +177,19 @@ body {
     font-size: var(--home-section-title-size) !important;
     color: var(--home-section-title-color) !important;
     font-weight: bold;
+}
+
+/* 首頁文字獨立設定 */
+.bdtext .intro-text {
+    font-size: var(--intro-text-size);
+    color: var(--intro-text-color);
+    margin-bottom: 5px; /* 行距 */
+}
+
+.bdtext .exp-text {
+    font-size: var(--exp-text-size);
+    color: var(--exp-text-color);
+    margin-bottom: 3px; /* 行距 */
 }
 
 /* 內容區塊背板 */
