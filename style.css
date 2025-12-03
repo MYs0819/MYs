@@ -11,6 +11,7 @@
     --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; 
 
     /* ==================== 1. 導航列設定 (Navbar) ==================== */
+    
     /* [首頁] [各大系統] [資訊補給] */
     --nav-item-size: 18px;          /* 文字大小 */
     --nav-text-color: #ddd;         /* 平常顏色 */
@@ -18,30 +19,30 @@
     --nav-padding-y: 15px;          /* 上下厚度 */
     --nav-padding-x: 20px;          /* 左右間距 */
 
-/* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
-    /* [MeiYang 卡片] */
-    --card-bg-color: #262626;        /* 卡片底色 */
+
+    /* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
     
+    /* [MeiYang 卡片] */
+    --card-bg-color: #262626;        /* 卡片底色 */    
     --home-name-size: 30px;          /* MeiYang 名字大小 */
     --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */     
-    --home-desc-color: #efefef;      /* 預設內文顏色 (如果沒特別設定就用這個) */
+    --home-desc-color: #efefef;      /* 預設內文顏色 */
     --home-card-top-spacing: 20px;   /* 卡片距離頂部的高度 */
     --home-name-margin-top: 0px;     /* 名字距離圖片的高度 */
 
     /* [個人介紹與經歷] (可獨立調整) */
-    /* 上半部：詞曲創作者...人資承辦負責 */
     --intro-text-size: 16px;         /* 文字大小 */
     --intro-text-color: #cccccc;     /* 文字顏色 */
     
-    /* 下半部：經歷... */
-    --exp-text-size: 16px;           /* 文字大小 (可設小一點) */
-    --exp-text-color: #cccccc;       /* 文字顏色 (可設淡一點) */
+    --exp-text-size: 16px;           /* 文字大小 */
+    --exp-text-color: #cccccc;       /* 文字顏色 */
 
     /* [區塊標題] (音樂作品、業務承接事項) */
     --home-section-title-size: 30px; /* 標題大小 */
     --home-section-title-color: #FFFFFF; /* 標題顏色 */
 
     /* ==================== 3. 各大系統 & 資訊補給 (system/about) 獨立設定 ==================== */
+    
     /* [大標題 H1] (四週變形工時、勞資知識補給站) */
     --sys-h1-size: 30px;             /* H1 大小 */
     --sys-h1-color: #FFFFFF;         /* H1 顏色 */
@@ -57,9 +58,10 @@
     --sys-text-lines: 2;             /* 強制行數 (超過變...) */
 
     /* ==================== 4. 頁尾版權 (Footer) 獨立設定 ==================== */
+    
     /* [文字] (Email, Copyright) */
     --footer-text-size: 14px;        /* 文字大小 */
-    --footer-text-color: #777777;    /* 文字顏色 */
+    --footer-text-color: #999999;    /* 文字顏色 */
     
     /* [圖片] (MYs Logo) */
     --footer-logo-width-pc: 100px;    /* 電腦版寬度 */
@@ -167,6 +169,17 @@ body {
     margin-top: var(--home-name-margin-top);
     margin-bottom: 10px;
 }
+/* 首頁文字獨立設定 */
+.bdtext .intro-text {
+    font-size: var(--intro-text-size);
+    color: var(--intro-text-color);
+    margin-bottom: 5px;
+}
+.bdtext .exp-text {
+    font-size: var(--exp-text-size);
+    color: var(--exp-text-color);
+    margin-bottom: 3px;
+}
 @media (max-width: 768px) {
     .happy { width: 100% !important; height: auto !important; }
     .bdcard, .bdtext { width: 100% !important; float: none !important; padding: 10px !important; }
@@ -177,19 +190,6 @@ body {
     font-size: var(--home-section-title-size) !important;
     color: var(--home-section-title-color) !important;
     font-weight: bold;
-}
-
-/* 首頁文字獨立設定 */
-.bdtext .intro-text {
-    font-size: var(--intro-text-size);
-    color: var(--intro-text-color);
-    margin-bottom: 5px; /* 行距 */
-}
-
-.bdtext .exp-text {
-    font-size: var(--exp-text-size);
-    color: var(--exp-text-color);
-    margin-bottom: 3px; /* 行距 */
 }
 
 /* 內容區塊背板 */
@@ -265,14 +265,6 @@ h2.sub-title {
     line-height: 1.6;
 }
 
-/* Icon 置中 */
-.social-icons {
-    text-align: center;
-    margin-top: 20px;
-    white-space: nowrap; /* 強制不換行 */
-}
-.social-icons a { display: inline-block; margin: 0 5px; }
-
 /* 頁尾 */
 hr {
     margin-top: 10px;
@@ -294,6 +286,7 @@ footer p {
 }
 
 /* ==================== 6. 圖片放大燈箱 (Lightbox) ==================== */
+
 .lightbox-overlay {
     display: none; /* 預設隱藏 */
     position: fixed;
@@ -400,4 +393,42 @@ footer p {
     line-height: 1.8;      /* 行高 (行距) */
     color: #cccccc;        /* 稍微淡一點的顏色 */
     margin-bottom: 5px;
+}
+
+/* ==================== 8. 特殊排版修正 (連結2x2 & 圖示置中) ==================== */
+
+/* 1. 音樂連結設定 */
+/* 手機版 (預設)：維持原樣，置中就好 */
+.music-links-grid {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* 電腦版 (螢幕 > 992px)：強制變 2x2 田字型 */
+@media (min-width: 992px) {
+    .music-links-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 左右各一半 */
+        gap: 10px;                      /* 連結之間的空隙 */
+        justify-items: center;          /* 連結本身置中 */
+        max-width: 250px;               /* 限制寬度，讓它排得緊湊一點 */
+        margin: 15px auto;              /* 整個區塊置中 */
+    }
+}
+
+/* 2. 社群圖示 (Social Icons) 設定 */
+.social-icons {
+    text-align: center;
+    margin-top: 20px;
+    
+    /* 強制不換行 & 確保寬度佔滿容器 */
+    white-space: nowrap; 
+    width: 100%;
+    display: block;
+}
+
+/* 讓裡面的圖片按鈕保持間距 */
+.social-icons a { 
+    display: inline-block; 
+    margin: 0 5px; 
 }
