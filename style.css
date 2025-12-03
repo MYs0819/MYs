@@ -325,3 +325,57 @@ footer p {
         max-height: 80%; /* 留點空間給叉叉 */
     }
 }
+
+/* ==================== 7. 首頁折疊選單 (Accordion) ==================== */
+
+/* 外層面板設定 */
+.custom-panel {
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    margin-bottom: 15px !important; /* 每個項目之間的距離 */
+}
+
+/* 標題框框設定 (點擊的那一條) */
+.custom-heading {
+    background-color: #333333 !important; /* 底色 (深灰) */
+    border: 1px solid #555 !important;    /* 邊框顏色 */
+    border-radius: 5px !important;        /* 圓角 */
+    color: #ffffff !important;            /* 文字顏色 */
+    padding: 15px !important;             /* 內距 (讓框框胖一點) */
+    cursor: pointer;
+    transition: background-color 0.3s;    /* 滑鼠移過去的變色效果 */
+}
+
+.custom-heading:hover {
+    background-color: #444444 !important; /* 滑鼠移過去變稍微亮一點 */
+}
+
+.custom-heading a {
+    text-decoration: none !important;     /* 去除底線 */
+    display: block;                       /* 讓整條都能點 */
+    font-size: 18px;                      /* 標題文字大小 */
+    font-weight: bold;
+}
+
+/* 展開後的內容區塊 */
+.custom-body {
+    background-color: #262626 !important; /* 展開後的底色 */
+    border: 1px solid #444 !important;    /* 展開後的邊框 */
+    border-top: none !important;          /* 去掉上面的邊，接合標題 */
+    color: #efefef !important;            /* 內文文字顏色 */
+    padding: 20px !important;
+}
+
+/* 內文清單設定 */
+.custom-list {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.custom-list li {
+    font-size: 16px;       /* 內文文字大小 */
+    line-height: 1.8;      /* 行高 (行距) */
+    color: #cccccc;        /* 稍微淡一點的顏色 */
+    margin-bottom: 5px;
+}
