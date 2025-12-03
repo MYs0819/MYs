@@ -749,7 +749,7 @@
         </div>
     </div>
 
-    <div class="indexSystemInfo" style="background: linear-gradient(180deg,rgba(7, 51, 47, 1) 0%, rgba(6, 42, 36, 1) 59%, rgba(4, 33, 28, 1) 100%);">
+<div class="indexSystemInfo" style="background: linear-gradient(180deg,rgba(7, 51, 47, 1) 0%, rgba(6, 42, 36, 1) 59%, rgba(4, 33, 28, 1) 100%);">
         <h1 class="main-title">✍️ 薪資明細簽署系統</h1>
         
         <p style="text-align:center;">
@@ -766,7 +766,7 @@
                     2. 明細收入及扣款.<br>
                     3. 薪資單備註列表.
                 </p>
-                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-13">點擊察看</button>
             </div>
 
             <div class="col-md-3 col-xs-6">
@@ -777,7 +777,7 @@
                     3. 依規定,簽署「親簽」全名.<br>
                     4. 於時間內完成,勿造成承辦困擾.
                 </p>
-                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-14">點擊察看</button>
             </div>
 
             <div class="col-md-3 col-xs-6">
@@ -786,7 +786,7 @@
                     九號23:59前未回復,<br>
                     將視為無異議.
                 </p>
-                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-15">點擊察看</button>
             </div>
 
             <div class="col-md-3 col-xs-6">
@@ -795,7 +795,75 @@
                     薪資於每月十號匯入,<br>
                     若遇例假日或國定則順延.
                 </p>
-                <a class="btn btn-default" href="#">Learn more &raquo;</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-16">點擊察看</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-13" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="text-align:center">薪資單審核</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-desc-full"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-14" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="text-align:center">薪資單簽署</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-desc-full"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-15" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="text-align:center">核銷截止日</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-desc-full"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-16" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="text-align:center">薪資匯款日</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-desc-full"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
             </div>
         </div>
     </div>
@@ -806,7 +874,7 @@
             <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
         </div>
         <p style="color: var(--sub-text-color)">Email:yang750819@gmail.com</p>
-        <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MeiYang Version:b1.0.96-10/20~12/02</p>
+        <p style="color: var(--sub-text-color)">&copy; Copyright 2025 MeiYang Version:b1.0.97</p>
     </footer>
 
     </div>
@@ -823,7 +891,7 @@
 
     <script>
         $(document).ready(function(){
-            // [原有功能] System/About 頁面自動抓取文字
+            // System/About 頁面自動抓取文字
             $('.modal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
                 // 只有當按鈕存在且外面有 desc-text 時才執行 (避免在 index.html 報錯)
@@ -833,7 +901,7 @@
                 }
             });
 
-            // [新增功能] 點擊圖片放大 (燈箱效果)
+            // 點擊圖片放大 (燈箱效果)
             // 排除 footer logo 和 social icons
             $('img').not('.footer-logo').not('.social-icons img').on('click', function(){
                 // 如果圖片外面有包 <a> (是連結)，就不執行放大，讓它正常跳轉
