@@ -437,21 +437,23 @@ footer p {
 
 /* 獨立設定留言牆視窗的背景色 */
 #modal-contact .modal-content {
-    background-color: #666666; /* 這裡設為白色，您也可以改成其他顏色 */
-    /* border: 2px solid #333; */ /* 如果想要邊框也可以打開這行 */
+    background-color: #666666; /* 面板顏色 (深灰) */
+    /* border: 2px solid #333; */ /* 邊框顏色 */
 }
 
 /* A. 主標題設定 (例如：留言牆) */
 .contact-main-title {
-    color: #f3f3f3;       /* 文字顏色 (深色) */
+    color: #f3f3f3;       /* 文字顏色 (淺灰) */
     font-size: 25px;      /* 文字大小 (大標題) */
     font-weight: bold;    /* 文字粗細 (加粗) */
-    margin-bottom: 20px;  /* 與下方內容的距離 */
+    margin: 0;            /* 歸零，避免被推擠 */
+    padding: 10px 0;      /* 上下給一點空間，自然置中 */
+    line-height: 1.2;     /* 行高修正 */
 }
 
 /* B. 副標題設定 (例如：您的稱呼、聯絡信箱...) */
 .contact-sub-title {
-    color: #f3f3f3;       /* 文字顏色 (深色) */
+    color: #f3f3f3;       /* 文字顏色 (淺灰) */
     font-size: 16px;      /* 文字大小 (標準) */
     margin-bottom: 5px;   /* 與下方輸入框的距離 */
     font-weight: bold;    /* 文字粗細 (加粗) */
@@ -460,22 +462,32 @@ footer p {
 
 /* C. 填寫文字設定 (輸入框內部的字 & 預設提示字) */
 .contact-input-text {
-    color: #f3f3f3;       /* 輸入的文字顏色 */
-    font-size: 13px;      /* 輸入的文字大小 */
-    border-radius: 5px;   /* 邊框圓角 (數值越大越圓) */
-    border: 1px solid #ccc; /* 邊框線條 (1px細線、實線、灰色) */
-    background-color: #fff; /* 輸入框背景顏色 (白色) */
-    padding: 10px;        /* 輸入框內部的留白 (讓字不要貼邊) */
-    width: 100%;          /* 寬度 (佔滿整個容器) */
+    color: #000000;            /* 文字顏色 */
+    font-size: 13px;           /* 電腦版維持小字體 */
+    border-radius: 10px;       /* 邊框圓角 */
+    border: 1px solid #ccc;    /* 邊框線條 */
+    background-color: #efefef; /* 輸入框背景顏色 */
+    padding: 10px;             /* 輸入框內部的留白 */
+    width: 100%;               /* 寬度 */
+}
+
+/* ★★★ 防止 iPhone 自動放大 (手機版強制 16px) ★★★ */
+@media screen and (max-width: 768px) {
+    .contact-input-text {
+        font-size: 16px !important;
+    }
+    select.contact-input-text {
+        font-size: 16px !important;
+    }
 }
 
 /* 信箱小圖示設定 */
 .mail-icon-btn {
-    width: 25px;          /* 圖片寬度 (可由此調整大小) */
-    height: auto;         /* 高度 (自動等比例) */
+    width: 25px;          /* 圖片寬度 */
+    height: auto;         /* 高度 */
     cursor: pointer;      /* 滑鼠移過去變成手指形狀 */
     transition: transform 0.2s; /* 動畫效果時間 */
-    opacity: 0.7;         /* 透明度 (0.7代表微透明) */
+    opacity: 0.7;         /* 透明度 */
 }
 
 .mail-icon-btn:hover {
