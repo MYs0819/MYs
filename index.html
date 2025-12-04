@@ -298,7 +298,7 @@
                                 <option value="🎵 音樂創作">🎵 音樂製作 / 創作相關</option>
                                 <option value="🛠️ 企業系統">🛠️ 企業系統 / 系統諮詢</option>
                                 <option value="⚖️ 勞資承辦">⚖️ 勞資相關 / 薪資諮詢</option>
-                                <option value="🌐 問題回報">🐛 網站問題及優化回報</option>
+                                <option value="🌐 問題回報">🌐 網站問題及優化回報</option>
                                 <option value="👋 其他">👋 其他 / 純粹打招呼</option>
                             </select>
                         </div>
@@ -317,21 +317,19 @@
         </div>
     </div>
         
-    <hr/>
+<hr/>
     <footer style="text-align: center;">
         <div style="text-align: center;">
             <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
         </div>
         
         <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.106</p>
+            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.107</p>
             <img src="assets/img1/mail.png" class="mail-icon-btn" alt="聯絡我們" data-toggle="modal" data-target="#modal-contact">
         </div>
     </footer>
 
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </div> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <div id="imgLightbox" class="lightbox-overlay">
@@ -341,44 +339,42 @@
 
     <script>
         $(document).ready(function(){
-            // System/About 頁面自動抓取文字
+            
+            // A. System/About 頁面自動抓取文字 (既有功能)
             $('.modal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
-                // 只有當按鈕存在且外面有 desc-text 時才執行 (避免在 index.html 報錯)
                 if (button.length && button.parent().find('.desc-text').length) {
                     var content = button.parent().find('.desc-text').html();
                     $(this).find('.modal-desc-full').html(content);
                 }
             });
 
-            // 點擊圖片放大 (燈箱效果)
-            // 排除 footer logo 和 social icons
+            // B. 點擊圖片放大 (燈箱效果)
             $('img').not('.footer-logo').not('.social-icons img').not('.mail-icon-btn').on('click', function(){
-                // 如果圖片外面有包 <a> (是連結)，就不執行放大
                 if($(this).parent('a').length > 0) {
                     return;
                 }
-
                 var src = $(this).attr('src');
                 $('#lightboxImage').attr('src', src);
                 $('#imgLightbox').fadeIn();
             });
 
-            // 關閉燈箱
+            // C. 關閉燈箱
             $('.lightbox-close, .lightbox-overlay').on('click', function(e){
                 if(e.target.id !== 'lightboxImage') {
                      $('#imgLightbox').fadeOut();
                 }
             });
 
-            // 聯絡表單送出 (按鈕狀態變化版)
+            // D. 聯絡表單送出 (核心功能)
             $('#contactForm').on('submit', function(e) {
+                // 1. 攔截預設跳轉行為 (這行最重要！)
                 e.preventDefault();
 
                 var btn = $('#submitBtn');
-                var originalText = btn.text(); // 記住原本的 "送出訊息" 文字
+                var originalText = btn.text();
                 
-                // 1. 鎖定按鈕與欄位，顯示傳送中
+                // 2. 鎖定按鈕與欄位
                 btn.text('⏳ 傳送中...').prop('disabled', true);
                 $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', true);
 
@@ -389,7 +385,7 @@
                     details: $('textarea[name=details]').val()
                 };
 
-                // ★★★ 請記得換成您的 Google Apps Script 網址 ★★★
+                // ★★★ 您的 GAS 網址 ★★★
                 var scriptURL = "https://script.google.com/macros/s/AKfycbzX83cU2-obJ0TOckZYVtWE3pMXQtYZIE5ww4qGtm_xZ2xzI-cEoUXa1CB07UW-m3ss/exec";
 
                 $.ajax({
@@ -397,30 +393,33 @@
                     type: "POST",
                     data: formData,
                     success: function(response) {
-                        // 2. 成功：按鈕變文字 -> 等 1.5 秒 -> 關閉視窗 & 復原
+                        // 成功：顯示成功 -> 等待 -> 關閉
                         btn.text('✅ 送出成功');
                         
                         setTimeout(function() {
-                            $('#contactForm')[0].reset();       // 清空表單
-                            $('#modal-contact').modal('hide');  // 關閉視窗
+                            $('#contactForm')[0].reset();
+                            $('#modal-contact').modal('hide');
                             
-                            // 復原按鈕與欄位 (為了下次打開時是正常的)
+                            // 復原狀態
                             btn.text(originalText).prop('disabled', false);
                             $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false);
                         }, 1500);
                     },
                     error: function() {
-                        // 3. 失敗：按鈕變文字 -> 等 2 秒 -> 變回原本文字讓使用者重試
+                        // 失敗：顯示失敗 -> 等待 -> 復原讓使用者重試
                         btn.text('❌ 送出失敗');
                         
                         setTimeout(function() {
-                            btn.text(originalText).prop('disabled', false); // 解鎖按鈕
-                            // 解鎖欄位讓使用者修改
+                            btn.text(originalText).prop('disabled', false);
                             $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false); 
                         }, 2000);
                     }
                 });
             });
+        });
+    </script>
+</body>
+</html>
     </script>
 
 </body>
