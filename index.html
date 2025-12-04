@@ -292,18 +292,18 @@
                             <input type="email" name="email" class="form-control contact-input-text" placeholder="請填寫您的信箱或是LineID方便回復訊息給您..." required>
                         </div>
                         <div class="form-group">
-                            <label class="contact-sub-title">📋 事項分類：</label>
+                            <label class="contact-sub-title">📃 事項分類：</label>
                             <select name="category" class="form-control contact-input-text" required>
                                 <option value="" disabled selected>請選擇...</option>
                                 <option value="🎵 音樂創作">🎵 音樂製作 / 創作相關</option>
                                 <option value="🛠️ 企業系統">🛠️ 企業系統 / 系統諮詢</option>
                                 <option value="⚖️ 勞資承辦">⚖️ 勞資相關 / 薪資諮詢</option>
-                                <option value="🐛 問題回報">🐛 網站問題回報 / 優化系統回報</option>
+                                <option value="🌐 問題回報">🐛 網站問題及優化回報</option>
                                 <option value="👋 其他">👋 其他 / 純粹打招呼</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="contact-sub-title">詳細內容：</label>
+                            <label class="contact-sub-title">📝 詳細內容：</label>
                             <textarea name="details" class="form-control contact-input-text" rows="5" placeholder="請描述您的需求或是詢問事項..." required></textarea>
                         </div>
                         
@@ -378,7 +378,7 @@
                 var btn = $('#submitBtn');
                 var originalText = btn.text();
                 
-                btn.text('⏳ 傳送中...').prop('disabled', true);
+                btn.text('⏳ 傳送中，請耐心等候，請勿關閉此介面...').prop('disabled', true);
 
                 var formData = {
                     name: $('input[name=name]').val(),
