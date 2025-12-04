@@ -472,14 +472,16 @@
                 }
             });
 
-            // [新增功能] 聯絡表單送出
+            // 聯絡表單送出 (按鈕狀態變化版)
             $('#contactForm').on('submit', function(e) {
                 e.preventDefault();
 
                 var btn = $('#submitBtn');
-                var originalText = btn.text();
+                var originalText = btn.text(); // 記住原本的 "送出訊息" 文字
                 
-                btn.text('⏳　傳送中，請耐心等候，請勿關閉此介面...').prop('disabled', true);
+                // 1. 鎖定按鈕與欄位，顯示傳送中
+                btn.text('⏳ 傳送中...').prop('disabled', true);
+                $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', true);
 
                 var formData = {
                     name: $('input[name=name]').val(),
@@ -489,26 +491,37 @@
                 };
 
                 // ★★★ 請記得換成您的 Google Apps Script 網址 ★★★
-                var scriptURL = "https://script.google.com/macros/s/AKfycbzBq1_rGvFUccWwq4U8c6SZGOw6P1jRt5k8JrrdhwUgSDjrUV1Acau67RZgzUM_nzmGAQ/exec";
+                var scriptURL = "https://script.google.com/macros/s/AKfycbzX83cU2-obJ0TOckZYVtWE3pMXQtYZIE5ww4qGtm_xZ2xzI-cEoUXa1CB07UW-m3ss/exec";
 
                 $.ajax({
                     url: scriptURL,
                     type: "POST",
                     data: formData,
                     success: function(response) {
-                        alert("✅ 訊息已送出，我會盡快回覆您！");
-                        $('#contactForm')[0].reset();
-                        $('#modal-contact').modal('hide');
+                        // 2. 成功：按鈕變文字 -> 等 1.5 秒 -> 關閉視窗 & 復原
+                        btn.text('✅ 送出成功');
+                        
+                        setTimeout(function() {
+                            $('#contactForm')[0].reset();       // 清空表單
+                            $('#modal-contact').modal('hide');  // 關閉視窗
+                            
+                            // 復原按鈕與欄位 (為了下次打開時是正常的)
+                            btn.text(originalText).prop('disabled', false);
+                            $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false);
+                        }, 1500);
                     },
                     error: function() {
-                        alert("❌ 傳送失敗，請稍後再試！");
-                    },
-                    complete: function() {
-                        btn.text(originalText).prop('disabled', false);
+                        // 3. 失敗：按鈕變文字 -> 等 2 秒 -> 變回原本文字讓使用者重試
+                        btn.text('❌ 送出失敗');
+                        
+                        setTimeout(function() {
+                            btn.text(originalText).prop('disabled', false); // 解鎖按鈕
+                            // 解鎖欄位讓使用者修改
+                            $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false); 
+                        }, 2000);
                     }
                 });
             });
-        });
     </script>
 
 </body>
