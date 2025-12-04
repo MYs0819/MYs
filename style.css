@@ -469,6 +469,12 @@ footer p {
     background-color: #efefef; /* 輸入框背景顏色 (淺灰) */
     padding: 10px;        /* 輸入框內部的留白 */
     width: 100%;          /* 寬度 */
+
+/* 詳細內容輸入框 (Textarea) 獨立設定 */
+textarea.contact-input-text {
+    height: 150px !important; /* 強制拉高，數字可自己調 */
+    resize: none;             /* 禁止使用者自己拉大小，保持美觀 */
+}
     
 /* ★★★ 修正這裡：改成固定高度，確保每一格都一樣高 ★★★ */
     height: 45px !important; 
