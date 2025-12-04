@@ -874,6 +874,49 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modal-contact" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title contact-main-title" style="text-align:center">🪧 留言牆</h2>
+                </div>
+                <div class="modal-body">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="contact-sub-title">🔍 您的稱呼：</label>
+                            <input type="text" name="name" class="form-control contact-input-text" placeholder="請輸入姓名或是暱稱..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-sub-title">📧 聯絡方式：</label>
+                            <input type="email" name="email" class="form-control contact-input-text" placeholder="請填寫信箱或是LineID方便回覆訊息給您..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-sub-title">📃 事項分類：</label>
+                            <select name="category" class="form-control contact-input-text" required>
+                                <option value="" disabled selected>請選擇...</option>
+                                <option value="🎵 音樂創作">🎵 音樂製作 / 創作相關</option>
+                                <option value="🛠️ 企業系統">🛠️ 企業系統 / 系統諮詢</option>
+                                <option value="⚖️ 勞資承辦">⚖️ 勞資相關 / 薪資諮詢</option>
+                                <option value="🌐 問題回報">🐛 網站問題及優化回報</option>
+                                <option value="👋 其他">👋 其他 / 純粹打招呼</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-sub-title">📝 詳細內容：</label>
+                            <textarea name="details" class="form-control contact-input-text" rows="5" placeholder="請描述您的需求或是詢問事項..." required></textarea>
+                        </div>
+                        
+                        <div style="text-align:center; margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 40%;">取消</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 40%;">送出訊息</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>        
+        
     <hr/>
     <footer style="text-align: center;">
         <div style="text-align: center;">
@@ -881,7 +924,7 @@
         </div>
         
         <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.0.99</p>
+            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.0.100</p>
             <img src="assets/img1/mail.png" class="mail-icon-btn" alt="聯絡我們" data-toggle="modal" data-target="#modal-contact">
         </div>
     </footer>
@@ -931,6 +974,44 @@
                 }
             });
         });
+
+               // 聯絡表單送出
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+
+                var btn = $('#submitBtn');
+                var originalText = btn.text();
+                
+                btn.text('⏳ 傳送中，請耐心等候，請勿關閉此介面...').prop('disabled', true);
+
+                var formData = {
+                    name: $('input[name=name]').val(),
+                    email: $('input[name=email]').val(),
+                    category: $('select[name=category]').val(),
+                    details: $('textarea[name=details]').val()
+                };
+
+                // ★★★ 請記得換成您的 Google Apps Script 網址 ★★★
+                var scriptURL = "https://script.google.com/macros/s/AKfycbzBq1_rGvFUccWwq4U8c6SZGOw6P1jRt5k8JrrdhwUgSDjrUV1Acau67RZgzUM_nzmGAQ/exec";
+
+                $.ajax({
+                    url: scriptURL,
+                    type: "POST",
+                    data: formData,
+                    success: function(response) {
+                        alert("✅ 訊息已送出，我會盡快回覆您！");
+                        $('#contactForm')[0].reset();
+                        $('#modal-contact').modal('hide');
+                    },
+                    error: function() {
+                        alert("❌ 傳送失敗，請稍後再試！");
+                    },
+                    complete: function() {
+                        btn.text(originalText).prop('disabled', false);
+                    }
+                });
+            });
+        });     
     </script>
 
 </body>
