@@ -470,9 +470,9 @@ footer p {
     padding: 10px;        /* 輸入框內部的留白 */
     width: 100%;          /* 寬度 */
     
-    /* 避免文字被切掉 */
-    height: auto !important; /* 強制高度自動適應，把框框撐開 */
-    line-height: 1.5;        /* 設定行高，讓字體垂直置中 */
+/* ★★★ 修正這裡：改成固定高度，確保每一格都一樣高 ★★★ */
+    height: 45px !important; 
+    line-height: 1.5;        /* 文字垂直置中 */
 }
 
 /* ★★★ 防止 iPhone 自動放大 (手機版強制 16px) ★★★ */
