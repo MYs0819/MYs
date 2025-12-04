@@ -462,13 +462,17 @@ footer p {
 
 /* C. 填寫文字設定 (輸入框內部的字 & 預設提示字) */
 .contact-input-text {
-    color: #000000;            /* 文字顏色 */
-    font-size: 13px;           /* 電腦版維持小字體 */
-    border-radius: 10px;       /* 邊框圓角 */
-    border: 1px solid #ccc;    /* 邊框線條 */
-    background-color: #efefef; /* 輸入框背景顏色 */
-    padding: 10px;             /* 輸入框內部的留白 */
-    width: 100%;               /* 寬度 */
+    color: #000000;       /* 文字顏色 (全黑) */
+    font-size: 13px;      /* 電腦版維持小字體 */
+    border-radius: 10px;  /* 邊框圓角 */
+    border: 1px solid #ccc; /* 邊框線條 */
+    background-color: #efefef; /* 輸入框背景顏色 (淺灰) */
+    padding: 10px;        /* 輸入框內部的留白 */
+    width: 100%;          /* 寬度 */
+    
+    /* 避免文字被切掉 */
+    height: auto !important; /* 強制高度自動適應，把框框撐開 */
+    line-height: 1.5;        /* 設定行高，讓字體垂直置中 */
 }
 
 /* ★★★ 防止 iPhone 自動放大 (手機版強制 16px) ★★★ */
