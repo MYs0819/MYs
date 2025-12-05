@@ -1,431 +1,425 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeiYang's P.W.</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeiYang's P.W.</title>
 
-    <meta property="og:title" content="MeiYang's P.W." />
-    <meta property="og:description" content="MeiYang個人網站、各系統查看及勞資知識補給" />
-    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背.png" />
+    <meta property="og:title" content="MeiYang's P.W." />
+    <meta property="og:description" content="MeiYang個人網站、各系統查看及勞資知識補給" />
+    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背.png" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mys0819.github.io/MYs/" />
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    
-    <style>
-        /* 雖然大部分樣式都在 style.css，但這裡保留了部分特定樣式 */
-        .happy {
-            width: 800px;
-            margin: var(--home-card-top-spacing) auto 20px auto; 
-            border: solid 1px gray;
-            background-color: var(--card-bg-color);
-            overflow: hidden; 
-        }
-        .bdcard { width: 300px; float: left; padding: 20px; }
-        .bdcard img { display: block; width: 100%; }
-        .bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--home-desc-color); }
-        .bdtext h1 { font-size: var(--home-name-size); color: var(--home-name-color); margin-top: var(--home-name-margin-top); margin-bottom: 10px; }
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mys0819.github.io/MYs/" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    
+    <style>
+        /* 雖然大部分樣式都在 style.css，但這裡保留了部分特定樣式 */
+        .happy {
+            width: 800px;
+            margin: var(--home-card-top-spacing) auto 20px auto; 
+            border: solid 1px gray;
+            background-color: var(--card-bg-color);
+            overflow: hidden; 
+        }
+        .bdcard { width: 300px; float: left; padding: 20px; }
+        .bdcard img { display: block; width: 100%; }
+        .bdtext { float: right; width: 430px; padding: 20px 20px 0px 0px; color: var(--home-desc-color); }
+        .bdtext h1 { font-size: var(--home-name-size); color: var(--home-name-color); margin-top: var(--home-name-margin-top); margin-bottom: 10px; }
 
-        /* 首頁文字獨立設定 (配合 style.css 中的變數) */
-        .bdtext .intro-text {
-            font-size: var(--intro-text-size);
-            color: var(--intro-text-color);
-            margin-bottom: 5px;
-        }
-        .bdtext .exp-text {
-            font-size: var(--exp-text-size);
-            color: var(--exp-text-color);
-            margin-bottom: 3px;
-        }
+        /* 首頁文字獨立設定 (配合 style.css 中的變數) */
+        .bdtext .intro-text {
+            font-size: var(--intro-text-size);
+            color: var(--intro-text-color);
+            margin-bottom: 5px;
+        }
+        .bdtext .exp-text {
+            font-size: var(--exp-text-size);
+            color: var(--exp-text-color);
+            margin-bottom: 3px;
+        }
 
-        @media (max-width: 768px) {
-            .happy { width: 100% !important; height: auto !important; }
-            .bdcard, .bdtext { width: 100% !important; float: none !important; padding: 10px !important; }
-        }
-    </style>
+        @media (max-width: 768px) {
+            .happy { width: 100% !important; height: auto !important; }
+            .bdcard, .bdtext { width: 100% !important; float: none !important; padding: 10px !important; }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">首頁</a></li>
-                    <li><a href="system.html">各大系統</a></li>
-                    <li><a href="about.html">資訊補給</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">首頁</a></li>
+                    <li><a href="system.html">各大系統</a></li>
+                    <li><a href="about.html">資訊補給</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <div class="container body-content">
+    <div class="container body-content">
 
-    <div class="happy">
-        <div class="bdcard">
-            <img src="assets/img1/00.個人專業圖像.png" alt="個人圖像" />
-        </div>
-        <div class="bdtext">
-            <h1>MeiYang</h1>
-            <p class="intro-text">⦿ 詞曲創作者 ⦿ 不專業錄音師 ⦿ 菜逼八吉他手</p>
-            <p class="intro-text">⦿ 餐飲業打滾 ⦿ 外場管事主管 ⦿ 人資承辦負責</p>
-            
-            <p class="exp-text">⍟ 詞曲創作 - 2005 ~ 至今</p>
-            <p class="exp-text">⍟ 餐飲人生 - 2005 ~ 至今</p>
-            <p class="exp-text">⍟ 非專錄音 - 2018 ~ 至今</p>
-            <p class="exp-text">⍟ 人資承辦 - 2024 ~ 至今 (承接三品牌)</p>
-        </div>
-    </div>
+    <div class="happy">
+        <div class="bdcard">
+            <img src="assets/img1/00.個人專業圖像.png" alt="個人圖像" />
+        </div>
+        <div class="bdtext">
+            <h1>MeiYang</h1>
+            <p class="intro-text">⦿ 詞曲創作者 ⦿ 不專業錄音師 ⦿ 菜逼八吉他手</p>
+            <p class="intro-text">⦿ 餐飲業打滾 ⦿ 外場管事主管 ⦿ 人資承辦負責</p>
+            
+            <p class="exp-text">⍟ 詞曲創作 - 2005 ~ 至今</p>
+            <p class="exp-text">⍟ 餐飲人生 - 2005 ~ 至今</p>
+            <p class="exp-text">⍟ 非專錄音 - 2018 ~ 至今</p>
+            <p class="exp-text">⍟ 人資承辦 - 2024 ~ 至今 (承接三品牌)</p>
+        </div>
+    </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div style="text-align:center">
-                <h2 class="home-section-title">音樂作品</h2>
-            </div>
-            <img src="assets/img1/01.個人音樂圖像.jpg" style="max-height: 100%; max-width: 100%;" alt="音樂圖像" />
-            <br>
-            
-            <div class="music-links-grid">
-                <a href="https://reurl.cc/knzAMd">KKBOX &raquo;</a>
-                <a href="https://reurl.cc/NY7ele">Spotify &raquo;</a>
-                <a href="https://reurl.cc/qGlevE">Apple Music &raquo;</a>
-                <a href="https://reurl.cc/VYdVMA">My Music &raquo;</a>
-            </div>
-            <br>
-            
-            <div style="text-align:center;">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-music">
-                    點擊察看
-                </button>
-            </div>
-            
-            <div class="social-icons">
-                <a href="https://reurl.cc/7K1x4y"><img src="assets/img1/FB.png" height="55" width="55"></a>
-                <a href="https://reurl.cc/pakE9x"><img src="assets/img1/IG.png" height="55" width="55"></a>
-                <a href="https://reurl.cc/vQZNpe"><img src="assets/img1/YT.png" height="55" width="55"></a>
-                <a href="https://line.me/ti/p/kpJ29xANim"><img src="assets/img1/Line.png" height="55" width="55"></a>
-            </div>
-            <br>
-        </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div style="text-align:center">
+                <h2 class="home-section-title">音樂作品</h2>
+            </div>
+            <img src="assets/img1/01.個人音樂圖像.jpg" style="max-height: 100%; max-width: 100%;" alt="音樂圖像" />
+            <br>
+            
+            <div class="music-links-grid">
+                <a href="https://reurl.cc/knzAMd">KKBOX &raquo;</a>
+                <a href="https://reurl.cc/NY7ele">Spotify &raquo;</a>
+                <a href="https://reurl.cc/qGlevE">Apple Music &raquo;</a>
+                <a href="https://reurl.cc/VYdVMA">My Music &raquo;</a>
+            </div>
+            <br>
+            
+            <div style="text-align:center;">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-music">
+                    點擊察看
+                </button>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://reurl.cc/7K1x4y"><img src="assets/img1/FB.png" height="55" width="55"></a>
+                <a href="https://reurl.cc/pakE9x"><img src="assets/img1/IG.png" height="55" width="55"></a>
+                <a href="https://reurl.cc/vQZNpe"><img src="assets/img1/YT.png" height="55" width="55"></a>
+                <a href="https://line.me/ti/p/kpJ29xANim"><img src="assets/img1/Line.png" height="55" width="55"></a>
+            </div>
+            <br>
+        </div>
 
-        <div class="col-md-8">
-            <div style="text-align:center">
-                <h2 class="home-section-title">業務承接事項</h2>
-            </div>
-            
-            <div class="panel-group" id="accordion">
-                
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading custom-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                🛠️ 企業系統
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <div class="panel-body custom-body">
-                            <ul class="custom-list">
-                                <li>四週變形工時班表</li>
-                                <li>劃休預排系統</li>
-                                <li>出勤檢查系統</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-md-8">
+            <div style="text-align:center">
+                <h2 class="home-section-title">業務承接事項</h2>
+            </div>
+            
+            <div class="panel-group" id="accordion">
+                
+                <div class="panel panel-default custom-panel">
+                    <div class="panel-heading custom-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                🛠️ 企業系統
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body custom-body">
+                            <ul class="custom-list">
+                                <li>四週變形工時班表</li>
+                                <li>劃休預排系統</li>
+                                <li>出勤檢查系統</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading custom-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                📑 業務表單
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse2" class="panel-collapse collapse">
-                        <div class="panel-body custom-body">
-                            <ul class="custom-list">
-                                <li>SOP制訂與製作</li>
-                                <li>各表單設定與製作</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <div class="panel panel-default custom-panel">
+                    <div class="panel-heading custom-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                📑 業務表單
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body custom-body">
+                            <ul class="custom-list">
+                                <li>SOP制訂與製作</li>
+                                <li>各表單設定與製作</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading custom-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                📝 契約制定
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse3" class="panel-collapse collapse">
-                        <div class="panel-body custom-body">
-                            <ul class="custom-list">
-                                <li>入留離職契約</li>
-                                <li>相關證明制定</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <div class="panel panel-default custom-panel">
+                    <div class="panel-heading custom-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                📝 契約制定
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body custom-body">
+                            <ul class="custom-list">
+                                <li>入留離職契約</li>
+                                <li>相關證明制定</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="panel panel-default custom-panel">
-                    <div class="panel-heading custom-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                                ⚖️ 財管稅務
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse4" class="panel-collapse collapse">
-                        <div class="panel-body custom-body">
-                            <ul class="custom-list">
-                                <li>薪資查審與計算</li>
-                                <li>薪資單製作與簽署</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                <div class="panel panel-default custom-panel">
+                    <div class="panel-heading custom-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                                ⚖️ 財管稅務
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse4" class="panel-collapse collapse">
+                        <div class="panel-body custom-body">
+                            <ul class="custom-list">
+                                <li>薪資查審與計算</li>
+                                <li>薪資單製作與簽署</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="modal fade" id="modal-music" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title" style="text-align:center">上架作品</h2>
-                </div>
+    <div class="modal fade" id="modal-music" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="text-align:center">上架作品</h2>
+                </div>
 
-                <div class="modal-body">
-                    <ol>
-                        <li>
-                            『 你我一起 』
-                            <ul>
-                                <li>參與歌詞</li>
-                                <li>2020-02-10-上架</li>
-                            </ul>
-                            <img src="assets/img1/AA.你我一起.jpg" alt="你我一起" />
-                            <br>
-                        </li>
+                <div class="modal-body">
+                    <ol>
+                        <li>
+                            『 你我一起 』
+                            <ul>
+                                <li>參與歌詞</li>
+                                <li>2020-02-10-上架</li>
+                            </ul>
+                            <img src="assets/img1/AA.你我一起.jpg" alt="你我一起" />
+                            <br>
+                        </li>
 
-                        <li>
-                            『 面具 』
-                            <ul>
-                                <li>參與歌詞</li>
-                                <li>2020-02-10-上架</li>
-                            </ul>
-                            <img src="assets/img1/AB.面具.png" alt="面具" />
-                            <br>
-                        </li>
+                        <li>
+                            『 面具 』
+                            <ul>
+                                <li>參與歌詞</li>
+                                <li>2020-02-10-上架</li>
+                            </ul>
+                            <img src="assets/img1/AB.面具.png" alt="面具" />
+                            <br>
+                        </li>
 
-                        <li>
-                            『 妳還記得嗎？ 』
-                            <ul>
-                                <li>復刻愛情首部曲</li>
-                                <li>2021-08-30-上架</li>
-                            </ul>
-                            <img src="assets/img1/02.妳還記得嗎.jpg" alt="妳還記得嗎" />
-                            <br>
-                        </li>
+                        <li>
+                            『 妳還記得嗎？ 』
+                            <ul>
+                                <li>復刻愛情首部曲</li>
+                                <li>2021-08-30-上架</li>
+                            </ul>
+                            <img src="assets/img1/02.妳還記得嗎.jpg" alt="妳還記得嗎" />
+                            <br>
+                        </li>
 
-                        <li>
-                            『 再見了 親愛的 』
-                            <ul>
-                                <li>紀念愛情上部曲</li>
-                                <li>2025-05-20-上架</li>
-                            </ul>
-                            <img src="assets/img1/03.再見了親愛的.jpg" alt="再見了親愛的" />
-                            <br>
-                        </li>
+                        <li>
+                            『 再見了 親愛的 』
+                            <ul>
+                                <li>紀念愛情上部曲</li>
+                                <li>2025-05-20-上架</li>
+                            </ul>
+                            <img src="assets/img1/03.再見了親愛的.jpg" alt="再見了親愛的" />
+                            <br>
+                        </li>
 
-                        <li>
-                            『 疫起回家 』
-                            <ul>
-                                <li>紀念愛情上部曲</li>
-                                <li>2025-08-23-上架</li>
-                            </ul>
-                            <img src="assets/img1/04.疫起回家.png" alt="疫起回家" />
-                            <br>
-                        </li>
+                        <li>
+                            『 疫起回家 』
+                            <ul>
+                                <li>紀念愛情上部曲</li>
+                                <li>2025-08-23-上架</li>
+                            </ul>
+                            <img src="assets/img1/04.疫起回家.png" alt="疫起回家" />
+                            <br>
+                        </li>
 
-                        <li>
-                            『 告白の搖滾詩 』
-                            <ul>
-                                <li>紀念愛情上部曲</li>
-                                <li>2025-08-29-上架</li>
-                            </ul>
-                            <img src="assets/img1/AC.告白的搖滾詩.png" alt="告白的搖滾詩" />
-                            <br>
-                        </li>
-                    </ol>
-                </div>
+                        <li>
+                            『 告白の搖滾詩 』
+                            <ul>
+                                <li>紀念愛情上部曲</li>
+                                <li>2025-08-29-上架</li>
+                            </ul>
+                            <img src="assets/img1/AC.告白的搖滾詩.png" alt="告白的搖滾詩" />
+                            <br>
+                        </li>
+                    </ol>
+                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
 
-            </div>
-        </div>
-    </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="modal fade" id="modal-contact" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title contact-main-title" style="text-align:center">🪧 留言牆</h2>
-                </div>
-                <div class="modal-body">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label class="contact-sub-title">🔍 您的稱呼：</label>
-                            <input type="text" name="name" class="form-control contact-input-text" placeholder="請輸入姓名或是暱稱..." required>
-                        </div>
-                        <div class="form-group">
-                            <label class="contact-sub-title">📧 聯絡方式：</label>
-                            <input type="text" name="email" class="form-control contact-input-text" placeholder="請填寫信箱或是LineID方便回覆訊息給您..." required>
-                        </div>
-                        <div class="form-group">
-                            <label class="contact-sub-title">📃 事項分類：</label>
-                            <select name="category" class="form-control contact-input-text" required>
-                                <option value="" disabled selected>請選擇...</option>
-                                <option value="🎵 音樂創作">🎵 音樂製作 / 創作相關</option>
-                                <option value="🛠️ 企業系統">🛠️ 企業系統 / 系統諮詢</option>
-                                <option value="⚖️ 勞資承辦">⚖️ 勞資相關 / 薪資諮詢</option>
-                                <option value="🌐 問題回報">🌐 網站問題及優化回報</option>
-                                <option value="👋 其他">👋 其他 / 純粹打招呼</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="contact-sub-title">📝 詳細內容：</label>
-                            <textarea name="details" class="form-control contact-input-text" rows="5" placeholder="請描述您的需求或是詢問事項..." required></textarea>
-                        </div>
-                        
-                        <div style="text-align:center; margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 40%;">取消</button>
-                            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 40%;">送出訊息</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-        
+    <div class="modal fade" id="modal-contact" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title contact-main-title" style="text-align:center">🪧 留言牆</h2>
+                </div>
+                <div class="modal-body">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="contact-sub-title">🔍 您的稱呼：</label>
+                            <input type="text" name="name" class="form-control contact-input-text" placeholder="請輸入姓名或是暱稱..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-sub-title">📧 聯絡方式：</label>
+                            <input type="text" name="email" class="form-control contact-input-text" placeholder="請填寫信箱或是LineID方便回覆訊息給您..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-sub-title">📃 事項分類：</label>
+                            <select name="category" class="form-control contact-input-text" required>
+                                <option value="" disabled selected>請選擇...</option>
+                                <option value="🎵 音樂創作">🎵 音樂製作 / 創作相關</option>
+                                <option value="🛠️ 企業系統">🛠️ 企業系統 / 系統諮詢</option>
+                                <option value="⚖️ 勞資承辦">⚖️ 勞資相關 / 薪資諮詢</option>
+                                <option value="🌐 問題回報">🌐 網站問題及優化回報</option>
+                                <option value="👋 其他">👋 其他 / 純粹打招呼</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-sub-title">📝 詳細內容：</label>
+                            <textarea name="details" class="form-control contact-input-text" rows="5" placeholder="請描述您的需求或是詢問事項..." required></textarea>
+                        </div>
+                        
+                        <div style="text-align:center; margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 40%;">取消</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 40%;">送出訊息</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
 <hr/>
-    <footer style="text-align: center;">
-        <div style="text-align: center;">
-            <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
-        </div>
-        
-        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.112</p>
-            <img src="assets/img1/mail.png" class="mail-icon-btn" alt="聯絡我們" data-toggle="modal" data-target="#modal-contact">
-        </div>
-    </footer>
+    <footer style="text-align: center;">
+        <div style="text-align: center;">
+            <img src="assets/img1/MYs_logo_去背.png" class="footer-logo" alt="MYs Logo">
+        </div>
+        
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.113</p>
+            <img src="assets/img1/mail.png" class="mail-icon-btn" alt="聯絡我們" data-toggle="modal" data-target="#modal-contact">
+        </div>
+    </footer>
 
-</div> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </div> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <div id="imgLightbox" class="lightbox-overlay">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImage">
-    </div>
+    <div id="imgLightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+    </div>
 
-    <script>
-        $(document).ready(function(){
-            
-            // A. System/About 頁面自動抓取文字
-            $('.modal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget);
-                if (button.length && button.parent().find('.desc-text').length) {
-                    var content = button.parent().find('.desc-text').html();
-                    $(this).find('.modal-desc-full').html(content);
-                }
-            });
+    <script>
+        $(document).ready(function(){
+            
+            // A. System/About 頁面自動抓取文字 (既有功能)
+            $('.modal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                if (button.length && button.parent().find('.desc-text').length) {
+                    var content = button.parent().find('.desc-text').html();
+                    $(this).find('.modal-desc-full').html(content);
+                }
+            });
 
-            // B. 點擊圖片放大
-            $('img').not('.footer-logo').not('.social-icons img').not('.mail-icon-btn').on('click', function(){
-                if($(this).parent('a').length > 0) return;
-                var src = $(this).attr('src');
-                $('#lightboxImage').attr('src', src);
-                $('#imgLightbox').fadeIn();
-            });
+            // B. 點擊圖片放大 (燈箱效果)
+            $('img').not('.footer-logo').not('.social-icons img').not('.mail-icon-btn').on('click', function(){
+                if($(this).parent('a').length > 0) {
+                    return;
+                }
+                var src = $(this).attr('src');
+                $('#lightboxImage').attr('src', src);
+                $('#imgLightbox').fadeIn();
+            });
 
-            // C. 關閉燈箱
-            $('.lightbox-close, .lightbox-overlay').on('click', function(e){
-                if(e.target.id !== 'lightboxImage') {
-                     $('#imgLightbox').fadeOut();
-                }
-            });
+            // C. 關閉燈箱
+            $('.lightbox-close, .lightbox-overlay').on('click', function(e){
+                if(e.target.id !== 'lightboxImage') {
+                     $('#imgLightbox').fadeOut();
+                }
+            });
 
-            // D. 聯絡表單送出 (終極修正版)
-            // 使用 document 代理事件，確保動態元素也能被綁定
-            $(document).on('submit', '#contactForm', function(e) {
-                // 1. 絕對攔截預設跳轉
-                e.preventDefault();
-                e.stopPropagation();
+            // D. 聯絡表單送出 (核心功能)
+            $('#contactForm').on('submit', function(e) {
+                // 1. 攔截預設跳轉行為 (這行最重要！)
+                e.preventDefault();
 
-                var btn = $('#submitBtn');
-                var originalText = btn.text();
-                
-                // 2. 鎖定畫面
-                btn.text('⏳ 傳送中...').prop('disabled', true);
-                $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', true);
+                var btn = $('#submitBtn');
+                var originalText = btn.text();
+                
+                // 2. 鎖定按鈕與欄位
+                btn.text('⏳ 傳送中...').prop('disabled', true);
+                $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', true);
 
-                // 3. 準備資料
-                var formData = {
-                    name: $('input[name=name]').val(),
-                    email: $('input[name=email]').val(),
-                    category: $('select[name=category]').val(),
-                    details: $('textarea[name=details]').val()
-                };
+                var formData = {
+                    name: $('input[name=name]').val(),
+                    email: $('input[name=email]').val(),
+                    category: $('select[name=category]').val(),
+                    details: $('textarea[name=details]').val()
+                };
 
-                // ★★★ 請確認這是您剛剛測試成功的那個網址 ★★★
-                var scriptURL = "https://script.google.com/macros/s/AKfycbzX83cU2-obJ0TOckZYVtWE3pMXQtYZIE5ww4qGtm_xZ2xzI-cEoUXa1CB07UW-m3ss/exec";
+                // ★★★ 您的 GAS 網址 ★★★
+                var scriptURL = "https://script.google.com/macros/s/AKfycbwaXco0s0yVboYUy7-5B78qZXlnpjFaVbZT8rIcfo_x54siFBEdnU5Ra3lAR4_ZbUF5LA/exec";
 
-                // 4. 發送請求
-                $.ajax({
-                    url: scriptURL,
-                    method: "POST",
-                    dataType: "json",
-                    data: formData,
-                    success: function(response) {
-                        handleSuccess(btn, originalText);
-                    },
-                    error: function(xhr, status, error) {
-                        console.log("狀態碼:", xhr.status);
-                        // GAS 跨域回傳 302/200/0 都算成功
-                        if (xhr.status === 200 || xhr.status === 0 || xhr.status === 302) {
-                             handleSuccess(btn, originalText);
-                        } else {
-                             alert("傳送失敗 (代碼:" + xhr.status + ")，請稍後再試。");
-                             setTimeout(function() {
-                                btn.text(originalText).prop('disabled', false);
-                                $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false); 
-                            }, 2000);
-                        }
-                    }
-                });
-            });
+                $.ajax({
+                    url: scriptURL,
+                    type: "POST",
+                    data: formData,
+                    success: function(response) {
+                        // 成功：顯示成功 -> 等待 -> 關閉
+                        btn.text('✅ 送出成功');
+                        
+                        setTimeout(function() {
+                            $('#contactForm')[0].reset();
+                            $('#modal-contact').modal('hide');
+                            
+                            // 復原狀態
+                            btn.text(originalText).prop('disabled', false);
+                            $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false);
+                        }, 1500);
+                    },
+                    error: function() {
+                        // 失敗：顯示失敗 -> 等待 -> 復原讓使用者重試
+                        btn.text('❌ 送出失敗');
+                        
+                        setTimeout(function() {
+                            btn.text(originalText).prop('disabled', false);
+                            $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false); 
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
 
-            // 成功後的處理
-            function handleSuccess(btn, originalText) {
-                btn.text('✅ 送出成功');
-                setTimeout(function() {
-                    $('#contactForm')[0].reset();
-                    $('#modal-contact').modal('hide');
-                    btn.text(originalText).prop('disabled', false);
-                    $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false);
-                }, 1500);
-            }
-        });
-    </script>
-    
 </body>
 </html>
+
+再看一下 先不要回覆我 我還要說話
