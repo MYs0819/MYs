@@ -324,7 +324,7 @@
         </div>
         
         <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.109</p>
+            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.111</p>
             <img src="assets/img1/mail.png" class="mail-icon-btn" alt="聯絡我們" data-toggle="modal" data-target="#modal-contact">
         </div>
     </footer>
@@ -386,7 +386,71 @@
                 };
 
                 // ★★★ 您的 GAS 網址 ★★★
-                var scriptURL = "https://script.google.com/macros/s/AKfycbw8Z03IXCiV3pF3k6Fuw8Rt-OW4SDxidnECsLL9ODxdmXTQipKjzCHPWkfFZvLg8USW3A/exec";
+                var scriptURL = "// [D. 聯絡表單送出 - 終極修正版]
+            $('#contactForm').on('submit', function(e) {
+                // 1. 攔截預設跳轉行為
+                e.preventDefault();
+
+                var btn = $('#submitBtn');
+                var originalText = btn.text();
+                
+                // 2. 鎖定按鈕與欄位
+                btn.text('⏳ 傳送中...').prop('disabled', true);
+                $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', true);
+
+                // 3. 準備資料
+                var formData = {
+                    name: $('input[name=name]').val(),
+                    email: $('input[name=email]').val(),
+                    category: $('select[name=category]').val(),
+                    details: $('textarea[name=details]').val()
+                };
+
+                // ★★★ 請務必確認網址是您剛剛測試成功的那個 ★★★
+                var scriptURL = "https://script.google.com/macros/s/AKfycbzX83cU2-obJ0TOckZYVtWE3pMXQtYZIE5ww4qGtm_xZ2xzI-cEoUXa1CB07UW-m3ss/exec";
+
+                // 4. 發送請求 (使用 redirect 設定)
+                $.ajax({
+                    url: scriptURL,
+                    method: "POST", // 改用 method 屬性
+                    dataType: "json", // 預期回傳 json，如果失敗也沒關係
+                    data: formData,
+                    success: function(response) {
+                        // 雖然是 success，但有時候 GAS 會回傳 302 跳轉，ajax 還是可能跑到 error
+                        // 所以我們在這裡處理成功邏輯
+                        handleSuccess(btn, originalText);
+                    },
+                    error: function(xhr, status, error) {
+                        // ★★★ 關鍵：GAS 跨網域常常會跑到 error 但其實成功了 ★★★
+                        // 只要 status 是 200，或者沒有嚴重的 404/500，我們都視為成功
+                        console.log("狀態碼:", xhr.status);
+                        if (xhr.status === 200 || xhr.status === 0) { // 0 有時候也是跨域成功的表現
+                             handleSuccess(btn, originalText);
+                        } else {
+                             // 真的失敗
+                             alert("傳送失敗 (代碼:" + xhr.status + ")，請稍後再試。");
+                             // 復原
+                             setTimeout(function() {
+                                btn.text(originalText).prop('disabled', false);
+                                $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false); 
+                            }, 2000);
+                        }
+                    }
+                });
+            });
+
+            // 成功後的處理函式 (抽出來共用)
+            function handleSuccess(btn, originalText) {
+                btn.text('✅ 送出成功');
+                setTimeout(function() {
+                    $('#contactForm')[0].reset();
+                    $('#modal-contact').modal('hide');
+                    
+                    // 復原狀態
+                    btn.text(originalText).prop('disabled', false);
+                    $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false);
+                }, 1500);
+            }";
 
                 $.ajax({
                     url: scriptURL,
