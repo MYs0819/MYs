@@ -475,13 +475,29 @@ textarea.contact-input-text {
     height: 150px !important; /* 強制拉高，數字可自己調 */
     resize: none;             /* 禁止使用者自己拉大小，保持美觀 */
 }
+
+/* ==================== 詳細內容框框高度設定 ==================== */
+
+/* 預設 (手機版) 高度維持 150px */
+textarea.contact-input-text {
+    height: 150px !important;
+    line-height: 1.5;
+    resize: none;
+}
+
+/* 電腦版專用設定 (螢幕寬度大於 768px 時生效) */
+@media screen and (min-width: 768px) {
+    textarea.contact-input-text {
+        height: 250px !important; /* 電腦版拉得更高，貼底對齊 */
+    }
+}
     
-/* ★★★ 修正這裡：改成固定高度，確保每一格都一樣高 ★★★ */
+/* 改成固定高度，確保每一格都一樣高 */
     height: 45px !important; 
     line-height: 1.5;        /* 文字垂直置中 */
 }
 
-/* ★★★ 防止 iPhone 自動放大 (手機版強制 16px) ★★★ */
+/* 防止 iPhone 自動放大 (手機版強制 16px) */
 @media screen and (max-width: 768px) {
     .contact-input-text {
         font-size: 16px !important;
