@@ -23,9 +23,9 @@
     /* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
     
     /* [MeiYang 卡片] */
-    --card-bg-color: #262626;        /* 卡片底色 */    
+    --card-bg-color: #262626;        /* 卡片底色 */     
     --home-name-size: 30px;          /* MeiYang 名字大小 */
-    --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */     
+    --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */      
     --home-desc-color: #efefef;      /* 預設內文顏色 */
     --home-card-top-spacing: 20px;   /* 卡片距離頂部的高度 */
     --home-name-margin-top: 0px;     /* 名字距離圖片的高度 */
@@ -68,7 +68,7 @@
     --footer-logo-width-mobile: 100px; /* 手機版寬度 */
 
     /* [間距控制] */
-    --footer-logo-margin-top: 1px;      /* Logo 距離上方橫線的距離 */
+    --footer-logo-margin-top: 1px;       /* Logo 距離上方橫線的距離 */
     --footer-logo-margin-bottom: 0px;   /* Logo 距離下方 Email 的距離 */
     --footer-text-margin-y: 4px;        /* Email 與 Copyright 的間距 */
 
@@ -368,8 +368,8 @@ footer p {
 
 .custom-heading a {
     text-decoration: none !important;     /* 去除底線 */
-    display: block;                       /* 讓整條都能點 */
-    font-size: 18px;                      /* 標題文字大小 */
+    display: block;                        /* 讓整條都能點 */
+    font-size: 18px;                       /* 標題文字大小 */
     font-weight: bold;
 }
 
@@ -469,35 +469,25 @@ footer p {
     background-color: #efefef; /* 輸入框背景顏色 (淺灰) */
     padding: 10px;        /* 輸入框內部的留白 */
     width: 100%;          /* 寬度 */
-
-/* 詳細內容輸入框 (Textarea) 獨立設定 */
-textarea.contact-input-text {
-    height: 150px !important; /* 強制拉高，數字可自己調 */
-    resize: none;             /* 禁止使用者自己拉大小，保持美觀 */
+    height: 45px !important;  /* 固定高度，確保每一格都一樣高 */
+    line-height: 1.5;         /* 文字垂直置中 */
 }
 
-/* ==================== 詳細內容框框高度設定 ==================== */
-
-/* 預設 (手機版) 高度維持 150px */
+/* D. 詳細內容輸入框 (Textarea) 獨立設定 - 必須放在 .contact-input-text 之後 */
 textarea.contact-input-text {
-    height: 150px !important;
+    height: 150px !important; /* 預設 (手機版) 高度 150px */
+    resize: none;             /* 禁止使用者自己拉大小 */
     line-height: 1.5;
-    resize: none;
 }
 
-/* 電腦版專用設定 (螢幕寬度大於 768px 時生效) */
+/* E. 電腦版專用設定：拉高詳細內容框框 */
 @media screen and (min-width: 768px) {
     textarea.contact-input-text {
         height: 250px !important; /* 電腦版拉得更高，貼底對齊 */
     }
 }
-    
-/* 改成固定高度，確保每一格都一樣高 */
-    height: 45px !important; 
-    line-height: 1.5;        /* 文字垂直置中 */
-}
 
-/* 防止 iPhone 自動放大 (手機版強制 16px) */
+/* F. 防止 iPhone 自動放大 (手機版強制 16px) */
 @media screen and (max-width: 768px) {
     .contact-input-text {
         font-size: 16px !important;
