@@ -324,12 +324,12 @@
         </div>
         
         <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.111</p>
+            <p style="color: var(--sub-text-color); margin: 0;">&copy; Copyright 2025 MeiYang System Version:b1.2.112</p>
             <img src="assets/img1/mail.png" class="mail-icon-btn" alt="聯絡我們" data-toggle="modal" data-target="#modal-contact">
         </div>
     </footer>
 
-    </div> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</div> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <div id="imgLightbox" class="lightbox-overlay">
@@ -340,7 +340,7 @@
     <script>
         $(document).ready(function(){
             
-            // A. System/About 頁面自動抓取文字 (既有功能)
+            // A. System/About 頁面自動抓取文字
             $('.modal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
                 if (button.length && button.parent().find('.desc-text').length) {
@@ -349,11 +349,9 @@
                 }
             });
 
-            // B. 點擊圖片放大 (燈箱效果)
+            // B. 點擊圖片放大
             $('img').not('.footer-logo').not('.social-icons img').not('.mail-icon-btn').on('click', function(){
-                if($(this).parent('a').length > 0) {
-                    return;
-                }
+                if($(this).parent('a').length > 0) return;
                 var src = $(this).attr('src');
                 $('#lightboxImage').attr('src', src);
                 $('#imgLightbox').fadeIn();
@@ -366,15 +364,17 @@
                 }
             });
 
-// [D. 聯絡表單送出 - 終極修正版]
-            $('#contactForm').on('submit', function(e) {
-                // 1. 攔截預設跳轉行為
+            // D. 聯絡表單送出 (終極修正版)
+            // 使用 document 代理事件，確保動態元素也能被綁定
+            $(document).on('submit', '#contactForm', function(e) {
+                // 1. 絕對攔截預設跳轉
                 e.preventDefault();
+                e.stopPropagation();
 
                 var btn = $('#submitBtn');
                 var originalText = btn.text();
                 
-                // 2. 鎖定按鈕與欄位
+                // 2. 鎖定畫面
                 btn.text('⏳ 傳送中...').prop('disabled', true);
                 $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', true);
 
@@ -386,30 +386,25 @@
                     details: $('textarea[name=details]').val()
                 };
 
-                // ★★★ 請務必確認網址是您剛剛測試成功的那個 ★★★
-                var scriptURL = "https://script.google.com/macros/s/AKfycbw65Uxxmub8DgrYYGxe5Tn6Sji2-n_iZZ9dxkyElrzJPDU5x2k0hY4324SSfN0ZjiC-nA/exec";
+                // ★★★ 請確認這是您剛剛測試成功的那個網址 ★★★
+                var scriptURL = "https://script.google.com/macros/s/AKfycbzX83cU2-obJ0TOckZYVtWE3pMXQtYZIE5ww4qGtm_xZ2xzI-cEoUXa1CB07UW-m3ss/exec";
 
-                // 4. 發送請求 (使用 redirect 設定)
+                // 4. 發送請求
                 $.ajax({
                     url: scriptURL,
-                    method: "POST", // 改用 method 屬性
-                    dataType: "json", // 預期回傳 json，如果失敗也沒關係
+                    method: "POST",
+                    dataType: "json",
                     data: formData,
                     success: function(response) {
-                        // 雖然是 success，但有時候 GAS 會回傳 302 跳轉，ajax 還是可能跑到 error
-                        // 所以我們在這裡處理成功邏輯
                         handleSuccess(btn, originalText);
                     },
                     error: function(xhr, status, error) {
-                        // ★★★ 關鍵：GAS 跨網域常常會跑到 error 但其實成功了 ★★★
-                        // 只要 status 是 200，或者沒有嚴重的 404/500，我們都視為成功
                         console.log("狀態碼:", xhr.status);
-                        if (xhr.status === 200 || xhr.status === 0) { // 0 有時候也是跨域成功的表現
+                        // GAS 跨域回傳 302/200/0 都算成功
+                        if (xhr.status === 200 || xhr.status === 0 || xhr.status === 302) {
                              handleSuccess(btn, originalText);
                         } else {
-                             // 真的失敗
                              alert("傳送失敗 (代碼:" + xhr.status + ")，請稍後再試。");
-                             // 復原
                              setTimeout(function() {
                                 btn.text(originalText).prop('disabled', false);
                                 $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false); 
@@ -419,21 +414,18 @@
                 });
             });
 
-            // 成功後的處理函式 (抽出來共用)
+            // 成功後的處理
             function handleSuccess(btn, originalText) {
                 btn.text('✅ 送出成功');
                 setTimeout(function() {
                     $('#contactForm')[0].reset();
                     $('#modal-contact').modal('hide');
-                    
-                    // 復原狀態
                     btn.text(originalText).prop('disabled', false);
                     $('#contactForm input, #contactForm select, #contactForm textarea').prop('disabled', false);
                 }, 1500);
             }
-                });
-            });
         });
     </script>
+    
 </body>
 </html>
