@@ -384,7 +384,7 @@
                 }
             });
 
-            // D. 聯絡表單送出 (終極修正版)
+            // D. 聯絡表單送出
             // 使用 document 代理事件，確保動態元素也能被綁定，解決跳頁問題
             $(document).on('submit', '#contactForm', function(e) {
                 // 1. 絕對攔截預設跳轉
@@ -407,7 +407,7 @@
                 };
 
                 // ★★ 請務必確認這裡換成了您最新的 GAS 網址 ★★
-                var scriptURL = "https://script.google.com/macros/s/AKfycbysqR0D0aX37TGXPZSuosTVFVQ2DaWVC5IGi2Om2c7cEHAsziWQaCnNDzu5oPhgpXjO/exec";
+                var scriptURL = "https://script.google.com/macros/s/AKfycbw9m4KF2QPbLyKmVoIoqMZtnpklYDIewHUCQBQldLAlxeNM8YzcegNehcFWqoZzXsAt/exec";
 
                 // 4. 發送請求
                 $.ajax({
